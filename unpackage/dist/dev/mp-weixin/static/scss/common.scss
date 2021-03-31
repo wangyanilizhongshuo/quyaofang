@@ -1,0 +1,43 @@
+    %top-style{
+		width: 750rpx;
+		height: var(--status-bar-height);
+		position: fixed;
+		top:0rpx;
+		left:0rpx;
+		background-color: #fff;
+		z-index:10;
+	}
+	// 标题的头部和返回按钮
+	%title{
+			width: 750rpx;
+			height: 75rpx;
+			display: flex;
+			align-items: center;
+			// padding-left: 30rpx;
+			box-sizing: border-box;
+			position: fixed;
+			top: var(--status-bar-height);
+			left:0;
+			background-color: #fff;
+			z-index:10;
+		}
+			
+	%title-field{
+			flex: 1;
+			text-align: center;
+			font-weight: bold;
+			color: #313133;
+			font-size: 36rpx;
+				
+	}
+	// 省略号
+	@mixin ellipsis($number){
+		overflow : hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: $number;
+		-webkit-box-orient: vertical;
+	}
+	
+
+	

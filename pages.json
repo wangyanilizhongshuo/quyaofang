@@ -1,0 +1,390 @@
+{
+	"pages": [
+		{
+			"path" : "pages/index/design-decoration/design-decoration",
+			"style" : {
+						"navigationStyle":"custom"
+				   }
+		} ,
+		{
+		    "path" : "pages/index/constructionTeam/constructionTeam",
+		    "style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+		    "path" : "pages/index/newsInformation/newsInformation",
+		    "style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			 "path" : "pages/index/rentalRegister/rentalRegister",
+			 "style" : {
+				"navigationStyle":"custom"
+			}
+		 },
+		{
+			"path" : "pages/index/saleRegister/saleRegister",
+			"style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path" : "pages/index/saleHouse/saleHouse",
+			"style" : {
+						  "navigationStyle":"custom"
+					  }
+		},
+		
+		{
+		    "path" : "pages/index/rentHouse/rentHouse",
+		    "style" :                                                                                    
+		    {
+		         "navigationStyle":"custom"
+		    }
+		    
+		},
+		
+		
+		{
+			"path" : "pages/index/search/search",
+			"style" : {
+				 "navigationStyle":"custom"
+			}
+		},
+		{
+			"path" : "pages/index/search/search-list",
+			"style" : {
+				 "navigationStyle":"custom"
+			}
+		},
+		{
+		    "path" : "pages/message/message1",
+		    "style" :                                                                                    
+		    {
+		        "navigationStyle":"custom"
+		    }
+		    
+		},
+		{
+		    "path" : "pages/message/message",
+		    "style" :                                                                                    
+		    {
+		        "navigationStyle":"custom"
+		    }
+		    
+		},
+		{
+			   "path" : "pages/personData/personData",
+			   "style" : {
+				 "navigationStyle":"custom"
+			  }
+		 },
+		
+	
+		{
+			"path" : "pages/index/design-decoration/design-companyJoin",
+			"style" : {
+						"navigationStyle":"custom"
+				   }
+		} ,
+		{
+		    "path" : "pages/personData/myHouseResource/myHouseResource",
+		    "style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		
+		{
+			"path" : "pages/index/build-material/build-material",
+			"style" : {
+				 "navigationStyle":"custom"
+			}
+		},
+		{
+		    "path" : "pages/personData/myMessage/myMessage",
+		    "style" : {
+							   "navigationStyle":"custom"
+						   }
+		},
+		
+		
+		{
+			"path" : "pages/index/build-material/companyJoin",
+			"style" : {
+				 "navigationStyle":"custom"
+			}
+		},
+		
+		{
+			"path" : "pages/index/constructionTeam/construct-join",
+			"style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		
+		{
+		    "path" : "pages/personData/myRenting/myRenting",
+		    "style" : {
+				"navigationStyle":"custom"
+			}
+		} ,		
+		{
+		    "path" : "pages/index/newsInformation/new-detail",
+		    "style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+		      "path" : "pages/personData/houseDetail/rentHouseEdit",
+		      "style" : {
+		  		"navigationStyle":"custom"
+		  	}
+		  } ,
+		  
+		{
+		      "path" : "pages/personData/houseDetail/saleHouseEdit",
+		      "style" : {
+		  		"navigationStyle":"custom"
+		  	}
+		  } ,
+		{
+			 "path" : "pages/index/agent-service/apply-agent",
+			 "style" : {
+				 "navigationStyle":"custom"
+			}
+		 },
+		{
+			 "path" : "pages/personData/houseDetail/houseDetail",
+			 "style" : {
+				"navigationStyle":"custom"
+			}
+		 } ,
+		{
+			"path" : "pages/index/houseDetail/houseDetail",
+			"style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path" : "pages/index/houseDetail/houseDetail1",
+			"style" : {
+				"navigationStyle":"custom"
+			}
+		},
+		
+				{
+					 "path" : "pages/index/agent-service/agent-service",
+					 "style" : {
+						 "navigationStyle":"custom"
+					}
+				 },
+				
+				
+					
+				 {
+					"path" : "pages/personData/setting/setting",
+					"style" : {
+						"navigationStyle":"custom"
+					}
+				 },
+			  {
+		       	"path" : "pages/findHouse/findHouse",
+		       	"style" : {
+		       		"navigationStyle":"custom"
+		       	}
+		       },
+			   {
+			   	"path": "pages/index/index",
+			   	"style": {
+			   		"navigationStyle":"custom"
+			   	}
+			   }
+			   ,
+				
+				{
+					 "path" : "pages/index/design-decoration/design-detail",
+					 "style" : {
+								"navigationStyle":"custom"
+						   }
+				 } ,
+				{
+				   "path" : "pages/personData/myRelease/designer-detail",
+				   "style" : {
+									"navigationStyle":"custom"
+								}
+				}, 
+				
+				
+				{
+					"path" : "pages/personData/repairName",
+					"style" : {
+									 "navigationStyle":"custom"
+										  
+							  }
+				},
+				{
+					"path" : "pages/personData/setting/reRepairPwd",
+					"style" : {
+								 "navigationStyle":"custom"
+										 
+							  }
+				},
+				{
+				   "path" : "pages/personData/myBrowsingFooter/myBrowsingFooter",
+				   "style" : {
+									"navigationStyle":"custom"
+								}
+				},
+				{
+				   "path" : "pages/personData/myRelease/myRelease",
+				   "style" : {
+									"navigationStyle":"custom"
+								}
+				},
+				 {
+				    "path" : "pages/personData/myRelease/buildmaterialDetail",
+				    "style" : {
+				 					"navigationStyle":"custom"
+				 				}
+				 },
+				{
+				   "path" : "pages/personData/myRelease/agentEdite",
+				   "style" : {
+									"navigationStyle":"custom"
+								}
+				},
+		      
+				
+			   {
+			      "path" : "pages/personData/myRelease/designer-edit",
+			      "style" : {
+			   	        		"navigationStyle":"custom"
+			   	        	}
+			   }, 
+		      
+		       {
+		           "path" : "pages/personData/myInvited/myInvited",
+		           "style" : {
+		       					   "navigationStyle":"custom"
+		       				   }
+		       },
+			   
+		     {
+	              "path" : "pages/personData/myCollection/myCollection",
+	              "style" : {
+	          		"navigationStyle":"custom"
+	          		}
+	          } ,
+		     
+		    
+			
+		     {
+	           "path" : "pages/personData/myHousePropery/myHousePropery",
+	           "style" : {
+	       		"navigationStyle":"custom"
+	       	}
+	         },
+			   {
+				   "path" : "pages/personData/myHouse/myHouse",
+				   "style" : {
+					"navigationStyle":"custom"
+				}
+			   } ,
+		 
+		  {
+		      "path" : "pages/personData/setting/connectService",
+		      "style" : {
+		  		"navigationStyle":"custom"
+		  	}
+		  },
+		  {
+		      "path" : "pages/personData/setting/opinion",
+		      "style" : {
+		  		"navigationStyle":"custom"
+		  	}
+		  },
+		  {
+		      "path" : "pages/personData/setting/repairPwd",
+		      "style" : {
+		  		"navigationStyle":"custom"
+		  	}
+		  },
+		
+		  {
+		      "path" : "pages/personData/setting/aboutUs",
+		      "style" : {
+		  		"navigationStyle":"custom"
+		  	}
+		  },
+		  
+		  {
+		      "path" : "pages/personData/setting/addRegisterCode",
+		      "style" : {
+		  		"navigationStyle":"custom"
+		  	}
+		  },
+		 {
+	          "path" : "pages/findHouse/findHouse-detail",
+	          "style" : {
+	      		"navigationStyle":"custom"
+	      	}
+	      },
+		  {
+		       "path" : "pages/index/saleHouse/searchAddress",
+		       "style" : {
+		   		"navigationStyle":"custom"
+		   	}
+		   } ,
+		
+		
+		 {
+	        "path" : "pages/index/constructionTeam/construction-detail",
+	        "style" : {
+	    		"navigationStyle":"custom"
+	    	}
+	    },
+	    
+	  {
+	       "path" : "pages/index/build-material/material-detail",
+	       "style" : {
+	   		 "navigationStyle":"custom"
+	   	}
+	   },
+	
+		
+		{
+		    "path" : "pages/index/submitSuccess/submitSuccess",
+		    "style" : {
+				"navigationStyle":"custom"
+			}
+		}
+        ,{
+            "path" : "pages/register/register",
+             "style" :{
+                "navigationStyle":"custom"
+            }
+          } 
+		  ,{
+		      "path" : "pages/register/registerPsd",
+		       "style" :{
+		          "navigationStyle":"custom"
+		      }
+		    } 
+			 ,{
+		      "path" : "pages/register/registerDown",
+		       "style" :{
+		          "navigationStyle":"custom"
+		      }
+		    } 
+        
+      
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
