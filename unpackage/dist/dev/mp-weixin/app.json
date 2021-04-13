@@ -36,6 +36,7 @@
     "pages/personData/setting/reRepairPwd",
     "pages/personData/myBrowsingFooter/myBrowsingFooter",
     "pages/personData/myRelease/myRelease",
+    "pages/personData/myRelease/buildmaterialDetail",
     "pages/personData/myRelease/agentEdite",
     "pages/personData/myRelease/designer-edit",
     "pages/personData/myInvited/myInvited",
@@ -51,7 +52,12 @@
     "pages/index/saleHouse/searchAddress",
     "pages/index/constructionTeam/construction-detail",
     "pages/index/build-material/material-detail",
-    "pages/index/submitSuccess/submitSuccess"
+    "pages/index/submitSuccess/submitSuccess",
+    "pages/register/register",
+    "pages/register/registerPsd",
+    "pages/register/registerDown",
+    "pages/index/houseDetailP/houseDetail",
+    "pages/index/houseDetailP/houseDetail1"
   ],
   "subPackages": [],
   "window": {
@@ -60,5 +66,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap99.json"
 }

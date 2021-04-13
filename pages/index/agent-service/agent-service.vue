@@ -17,10 +17,10 @@
 					<view class="down">{{item.house_intro}}</view>
 				</view>
 				<view class="right">
-					<view class="first styless">
+					<!-- <view class="first styless">
 						<image class="logo-image" src="/static/image/message.png"></image>
 						<view class="filed">给ta留言</view>
-					</view>
+					</view> -->
 					<view class="second styless"  @tap.stop="call(item.house_phone)">
 						<image class="logo-image" src="/static/image/call.png"></image>
 						<view class="filed">在线联系</view>
@@ -52,11 +52,10 @@
 			quits(){
 				let text = '不在网游SDK环境内，找不到方法';
 				 if(window.android && window.android.quit){
-					text = window.android.quit();
+					 window.android.quit();
 				 }else{
-					 // alert('重新退出'')
+					 window.webkit.messageHandlers.quit.postMessage(123);      
 				 }
-			     return text;
 			  },
 			// 申请经纪人跳转
 			jumps(){

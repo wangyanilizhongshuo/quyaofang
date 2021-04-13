@@ -2,7 +2,7 @@
 
 /***/ 169:
 /*!************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/App.vue?vue&type=style&index=0&lang=css& ***!
+  !*** D:/gozhaofang/quyaofang/App.vue?vue&type=style&index=0&lang=css& ***!
   \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 170:
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/App.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/App.vue?vue&type=style&index=0&lang=css& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -31,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 221:
 /*!****************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/main.js?{"page":"pages%2Findex%2FrentHouse%2FrentHouse"} ***!
+  !*** D:/gozhaofang/quyaofang/main.js?{"page":"pages%2Findex%2FrentHouse%2FrentHouse"} ***!
   \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -47,7 +47,7 @@ createPage(_rentHouse.default);
 
 /***/ 222:
 /*!*******************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/rentHouse/rentHouse.vue ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/rentHouse/rentHouse.vue ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -88,7 +88,7 @@ component.options.__file = "pages/index/rentHouse/rentHouse.vue"
 
 /***/ 223:
 /*!**************************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/rentHouse/rentHouse.vue?vue&type=template&id=15592ad9&scoped=true& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/rentHouse/rentHouse.vue?vue&type=template&id=15592ad9&scoped=true& ***!
   \**************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 224:
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/rentHouse/rentHouse.vue?vue&type=template&id=15592ad9&scoped=true& ***!
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/rentHouse/rentHouse.vue?vue&type=template&id=15592ad9&scoped=true& ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   citySelect: function() {
-    return Promise.all(/*! import() | components/city-select/city-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/city-select/city-select")]).then(__webpack_require__.bind(null, /*! @/components/city-select/city-select.vue */ 589))
+    return Promise.all(/*! import() | components/city-select/city-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/city-select/city-select")]).then(__webpack_require__.bind(null, /*! @/components/city-select/city-select.vue */ 637))
   }
 }
 var render = function() {
@@ -171,7 +171,7 @@ render._withStripped = true
 
 /***/ 225:
 /*!********************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/rentHouse/rentHouse.vue?vue&type=script&lang=js& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/rentHouse/rentHouse.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -187,7 +187,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 226:
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/rentHouse/rentHouse.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/rentHouse/rentHouse.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -348,7 +348,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _App = _interopRequireDefault(__webpack_require__(/*! ../../../App.vue */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var citySelect = function citySelect() {Promise.all(/*! require.ensure | components/city-select/city-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/city-select/city-select")]).then((function () {return resolve(__webpack_require__(/*! @/components/city-select/city-select.vue */ 589));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _App = _interopRequireDefault(__webpack_require__(/*! ../../../App.vue */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var citySelect = function citySelect() {Promise.all(/*! require.ensure | components/city-select/city-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/city-select/city-select")]).then((function () {return resolve(__webpack_require__(/*! @/components/city-select/city-select.vue */ 637));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 {
@@ -408,12 +408,12 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ../../../App.vue */ 5)
       getAddressValue: '江干区',
       getMoneyValue: '',
       getHouseValue: '',
-      salesTypes: 1, //毛坯房，公寓房 的类别之分,
+      rentTypes: 1, //毛坯房，公寓房 的类别之分,
       saleType: '', //发送给后端的数据
       searchKey: '', //搜索关键字
-      orderType: 'asc' };
-
-
+      orderType: 'asc'
+      // user_token:''
+    };
 
   },
   components: {
@@ -445,39 +445,38 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ../../../App.vue */ 5)
     var that = this;
     that.setData(options);
     that.formatName = 'title';
-
     // 毛坯房
-    if (that.salesTypes == 1) {
+    if (that.rentTypes == 1) {
       that.priceRange = ['≤100万元', '100-150万元', '150-200万元', '200-300万元', '≥300万元'];
       that.houseAreaList = ['≤50㎡', '50-70㎡', '70-90㎡', '90-120㎡', '120-140㎡', '140-160㎡', '160-200㎡', '≥200㎡'];
       that.arientionList = ['南北', '南', '西', '北', '东'];
       that.floorChoiceList = ['1~~3层', '4~~6层', '7~~9层', '9层以上'];
       that.saleType = 2;
       console.log(2222);
-    } else if (that.salesTypes == 2) {
+    } else if (that.rentTypes == 2) {
       that.priceRange = ['≤100万元', '100-150万元', '150-200万元', '200-300万元', '≥300万元'];
       that.houseAreaList = ['≤50㎡', '50-70㎡', '70-90㎡', '90-120㎡', '120-140㎡', '140-160㎡', '160-200㎡', '≥200㎡'];
       that.arientionList = ['南北', '南', '西', '北', '东'];
       that.floorChoiceList = ['1~~3层', '4~~6层', '7~~9层', '9层以上'];
       that.saleType = 3;
     } else
-    if (that.salesTypes == 3) {
+    if (that.rentTypes == 3) {
       that.priceRange = ['≤500万元', '500-1500万元', '1500-3000万元', '≥3000万元'];
       that.floorChoiceList = ['单层', '多层'];
       that.houseAreaList = ['≤50㎡', '50-70㎡', '70-90㎡', '90-120㎡', '120-140㎡', '140-160㎡', '160-200㎡', '≥200㎡'];
       that.houseHightList = ['≤6m', '6-10m', '≥10m'];
       that.saleType = 4;
-    } else if (that.salesTypes == 4) {
+    } else if (that.rentTypes == 4) {
       that.priceRange = ['≤100万元', '100-150万元', '150-200万元', '200-300万元', '≥300万元'];
       that.houseAreaList = ['≤50㎡', '50-70㎡', '70-90㎡', '90-120㎡', '120-140㎡', '140-160㎡', '160-200㎡', '≥200㎡'];
       that.arientionList = ['南北', '南', '西', '北', '东'];
       that.floorChoiceList = ['1~~3层', '4~~6层', '7~~9层', '9层以上'];
       that.saleType = 6;
-    } else if (that.salesTypes == 5) {
+    } else if (that.rentTypes == 5) {
       that.priceRange = ['≤300万元', '300-500万元', '500-1000万元', '≥1000万元'];
       that.houseAreaList = ['≤50㎡', '50-70㎡', '70-90㎡', '90-120㎡', '120-140㎡', '140-160㎡', '160-200㎡', '≥200㎡'];
       that.saleType = 5;
-    } else if (that.salesTypes == 6) {
+    } else if (that.rentTypes == 6) {
       that.priceRange = ['≤100万元', '100-500万元', '500-1000万元', '1000-3000万元', '≥3000万元'];
       that.houseAreaList = ['≤100㎡', '100-300㎡', '300-500㎡', '≥500㎡'];
       that.saleType = 1;
@@ -493,11 +492,10 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ../../../App.vue */ 5)
     quits: function quits() {
       var text = '不在网游SDK环境内，找不到方法';
       if (window.android && window.android.quit) {
-        text = window.android.quit();
+        window.android.quit();
       } else {
-        // alert('重新退出'')
+        window.webkit.messageHandlers.quit.postMessage(123);
       }
-      return text;
     },
     pointSearch: function pointSearch() {
       this.positionFlag = false;
@@ -636,7 +634,7 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ../../../App.vue */ 5)
 
 /***/ 227:
 /*!*****************************************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/rentHouse/rentHouse.vue?vue&type=style&index=0&id=15592ad9&scoped=true&lang=scss& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/rentHouse/rentHouse.vue?vue&type=style&index=0&id=15592ad9&scoped=true&lang=scss& ***!
   \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -652,7 +650,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 228:
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/rentHouse/rentHouse.vue?vue&type=style&index=0&id=15592ad9&scoped=true&lang=scss& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/rentHouse/rentHouse.vue?vue&type=style&index=0&id=15592ad9&scoped=true&lang=scss& ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -665,7 +663,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 5:
 /*!***************************************!*\
-  !*** D:/gozhaofang/findHouse/App.vue ***!
+  !*** D:/gozhaofang/quyaofang/App.vue ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -705,7 +703,7 @@ component.options.__file = "App.vue"
 
 /***/ 6:
 /*!****************************************************************!*\
-  !*** D:/gozhaofang/findHouse/App.vue?vue&type=script&lang=js& ***!
+  !*** D:/gozhaofang/quyaofang/App.vue?vue&type=script&lang=js& ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -721,7 +719,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 7:
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/App.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/App.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

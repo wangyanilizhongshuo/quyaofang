@@ -93,13 +93,13 @@
 					 <view class="lists-box  area-box">
 					 	<view class="field">面积</view>
 					 	<view class="area-list-box">
-					 		<view :style="salesTypes==3?'width:170rpx;':'width:145rpx'" class="area-list" :class="choiceAreasIndex==index?'area-list-active':''"
+					 		<view :style="rentTypes==3?'width:170rpx;':'width:145rpx'" class="area-list" :class="choiceAreasIndex==index?'area-list-active':''"
 					 		       @tap.stop="choiceAreas(index)" v-for="(item,index) in houseAreaList"
 					 				:key="index">{{item}}
 					 		</view>
 					 	</view>
 					 </view>
-					 <view class="lists-box  area-box marginTopfs" v-if="salesTypes!=3 && salesTypes!=5 && salesTypes!=6">
+					 <view class="lists-box  area-box marginTopfs" v-if="rentTypes!=3 && rentTypes!=5 && rentTypes!=6">
 					 	<view class="field">朝向</view>
 					 	<view class="area-list-box">
 					 		<view class="area-list" :class="arientionIndex==index?'area-list-active':''"
@@ -108,7 +108,7 @@
 					 		</view>
 					 	</view>
 					 </view>
-					 <view class="lists-box  area-box marginTopfs" v-if="salesTypes!=5 && salesTypes!=6">
+					 <view class="lists-box  area-box marginTopfs" v-if="rentTypes!=5 && rentTypes!=6">
 					 	<view class="field">楼层</view>
 					 	<view class="area-list-box">
 					 		<view class="area-list" :class="floorChoiceIndex==index?'area-list-active':''"
@@ -117,7 +117,7 @@
 					 		</view>
 					 	</view>
 					 </view>
-					 <view class="lists-box  area-box marginTopfs" v-if="salesTypes==3">
+					 <view class="lists-box  area-box marginTopfs" v-if="rentTypes==3">
 					 	<view class="field">层高</view>
 					 	<view class="area-list-box">
 					 		<view class="area-list" :class="hHeightIndex==index?'area-list-active':''"
@@ -213,11 +213,11 @@
 				getAddressValue:'江干区',
 				getMoneyValue:'',
 				getHouseValue:'',
-				salesTypes:1,//毛坯房，公寓房 的类别之分,
+				rentTypes:1,//毛坯房，公寓房 的类别之分,
 				saleType:'',//发送给后端的数据
 				searchKey:'',//搜索关键字
-				orderType:'asc'
-				
+				orderType:'asc',
+				// user_token:''
 	         }
 		  
 		},
@@ -250,39 +250,38 @@
 			let that=this;
 			that.setData(options);
 			that.formatName = 'title';
-			
 			// 毛坯房
-			if(that.salesTypes==1 ){
+			if(that.rentTypes==1 ){
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
 				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
 				that.saleType=2;
 					console.log(2222)
-			}else if (that.salesTypes==2){
+			}else if (that.rentTypes==2){
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
 				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
 				that.saleType=3;
 			}
-			else if (that.salesTypes==3){
+			else if (that.rentTypes==3){
 				that.priceRange=['≤500万元','500-1500万元','1500-3000万元','≥3000万元'];
 				that.floorChoiceList=['单层','多层'];
 			    that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.houseHightList=['≤6m','6-10m','≥10m'];
 				that.saleType=4;
-			}else if (that.salesTypes==4){
+			}else if (that.rentTypes==4){
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
 				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
 				that.saleType=6;
-			}else if (that.salesTypes==5){
+			}else if (that.rentTypes==5){
 				that.priceRange=['≤300万元','300-500万元','500-1000万元','≥1000万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.saleType=5;
-			}else if (that.salesTypes==6){
+			}else if (that.rentTypes==6){
 				that.priceRange=['≤100万元','100-500万元','500-1000万元','1000-3000万元','≥3000万元'];
 				that.houseAreaList=['≤100㎡','100-300㎡','300-500㎡','≥500㎡'];
 			    that.saleType=1;
@@ -298,11 +297,10 @@
 			quits(){
 				let text = '不在网游SDK环境内，找不到方法';
 				 if(window.android && window.android.quit){
-					text = window.android.quit();
+					 window.android.quit();
 				 }else{
-					 // alert('重新退出'')
+					 window.webkit.messageHandlers.quit.postMessage(123);      
 				 }
-			     return text;
 			  },
 			pointSearch(){
 				this.positionFlag=false;

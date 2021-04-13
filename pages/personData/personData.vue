@@ -59,13 +59,11 @@
 		},
 		methods: {
 			quits(){
-				let text = '返回错误！';
-				 if(window.android && window.android.quit){
-					text = window.android.quit();
-				 }else{
-					 // alert('重新退出'')
-				 }
-			     return text;
+				if(window.android && window.android.quit){
+						 window.android.quit();
+				}else{
+						 window.webkit.messageHandlers.quit.postMessage(123);      
+				}
 			  },
 			jumpsRepairName(){
 				uni.navigateTo({

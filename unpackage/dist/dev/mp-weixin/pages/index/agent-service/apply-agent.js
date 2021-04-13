@@ -2,7 +2,7 @@
 
 /***/ 349:
 /*!**********************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/main.js?{"page":"pages%2Findex%2Fagent-service%2Fapply-agent"} ***!
+  !*** D:/gozhaofang/quyaofang/main.js?{"page":"pages%2Findex%2Fagent-service%2Fapply-agent"} ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -18,7 +18,7 @@ createPage(_applyAgent.default);
 
 /***/ 350:
 /*!*************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/agent-service/apply-agent.vue ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/agent-service/apply-agent.vue ***!
   \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -59,7 +59,7 @@ component.options.__file = "pages/index/agent-service/apply-agent.vue"
 
 /***/ 351:
 /*!********************************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/agent-service/apply-agent.vue?vue&type=template&id=4d0140de&scoped=true& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/agent-service/apply-agent.vue?vue&type=template&id=4d0140de&scoped=true& ***!
   \********************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 352:
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/agent-service/apply-agent.vue?vue&type=template&id=4d0140de&scoped=true& ***!
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/agent-service/apply-agent.vue?vue&type=template&id=4d0140de&scoped=true& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -108,7 +108,7 @@ render._withStripped = true
 
 /***/ 353:
 /*!**************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/agent-service/apply-agent.vue?vue&type=script&lang=js& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/agent-service/apply-agent.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -124,7 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 354:
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/agent-service/apply-agent.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/agent-service/apply-agent.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -186,10 +186,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
     return {
+      tipsFlag: false,
+      tipsMsg: '',
       // 姓名
       name: '',
       // 电话号码
@@ -246,6 +249,12 @@ var _default =
                 uni.navigateTo({
                   url: '/pages/index/submitSuccess/submitSuccess' });
 
+              } else {
+                that.tipsFlag = true;
+                that.tipsMsg = res.message;
+                setTimeout(function () {
+                  that.tipsFlag = true;
+                }, 2500);
               }
             });
           } else if (res.cancel) {}
@@ -343,7 +352,7 @@ var _default =
 
 /***/ 355:
 /*!***********************************************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/agent-service/apply-agent.vue?vue&type=style&index=0&id=4d0140de&scoped=true&lang=scss& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/agent-service/apply-agent.vue?vue&type=style&index=0&id=4d0140de&scoped=true&lang=scss& ***!
   \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -359,7 +368,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 356:
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/agent-service/apply-agent.vue?vue&type=style&index=0&id=4d0140de&scoped=true&lang=scss& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/agent-service/apply-agent.vue?vue&type=style&index=0&id=4d0140de&scoped=true&lang=scss& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

@@ -67,8 +67,8 @@ let request = {
                'Authorization':'Bearer'
             },
             data:{
-				
-				 'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05',
+				'user_token':uni.getStorageSync('token'),
+				 // 'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05',
 				 ...data
 			},
 			 
@@ -134,7 +134,8 @@ let request = {
           },
           method: 'POST',
           data:{
-			  'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05',
+			  'user_token':uni.getStorageSync('token'),
+			  // 'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05',
           	  ...data
           },
           success(res) {

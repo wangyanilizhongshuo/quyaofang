@@ -57,6 +57,20 @@
   height: 40rpx;
   display: block;
 }
+.hbyOccurFlag.data-v-4d0140de {
+  position: absolute;
+  top: 500rpx;
+  left: 100rpx;
+  background-color: green;
+  width: 450rpx;
+  height: 130rpx;
+  line-height: 130rpx;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  opacity: 0.7;
+  border-radius: 20rpx;
+}
 .zw.data-v-4d0140de {
   height: 25px;
   width: 750rpx;

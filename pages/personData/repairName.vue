@@ -46,8 +46,11 @@
 				this.$h5.post('user/updname',{
 					nick:that.name
 				},(res)=>{
-					if(res.code ==0){
-						uni.navigateBack()
+					if(res.code==0){
+						uni.navigateTo({
+							url:'/pages/personData/personData'
+						})
+						// uni.navigateBack()
 					}
 				})
 				

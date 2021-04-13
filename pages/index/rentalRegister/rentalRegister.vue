@@ -389,13 +389,11 @@
 			quits(){
 				let text = '不在网游SDK环境内，找不到方法';
 				 if(window.android && window.android.quit){
-					text = window.android.quit();
+					 window.android.quit();
 				 }else{
-					  window.webkit.messageHandlers.quit.postMessage();      
-					 // alert('重新退出'')
-					 // window.webkit.messageHandlers.方法名.postMessage(params);
+					 window.webkit.messageHandlers.quit.postMessage(123);      
 				 }
-			     return text;
+			     
 			  },
 			  //获取区,县列表
 			  getquList(){

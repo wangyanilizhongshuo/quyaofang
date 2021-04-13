@@ -11,7 +11,8 @@
 				  <view class="msgBox styles">
 					  <image class="imgs" src="../../static/image/register-code.png"></image>
 					  <input class="input" v-model="code"  type="number" placeholder-style="color:#fff;font-size:22rpx;" placeholder="请填写验证码" />
-				      <view class="sendBox">发送验证码</view>
+				      <view class="sendBox" v-if="timeflag==false" @tap.stop='sendCode'>发送验证码</view>
+				      <view class="sendBox" v-if="timeflag==true" >还剩{{ timeNumber}}s</view>
 				  </view>
 			  </view>
 			  <view class="tips" @tap.stop="jumps">
@@ -19,6 +20,7 @@
 				  <image  class="logo" src="../../static/image/regiter-go.png"></image>
 			  </view>
 			  <view class="nextGo" @tap.stop="submit">下一步</view>
+			  <view class="showtips" v-if="tipflag">{{tipMsg}}</view>
 		  </view>
 	</view>
 </template>
@@ -28,13 +30,56 @@
 		data() {
 			return {
 				number:'',
-				code:''
+				code:'',
+				tipflag:false,
+				tipMsg:'',
+				timeNumber:60,
+				timeflag:false
 			}
 		},
 		methods: {
 			submit(){
-				uni.navigateTo({
-					url:'/pages/register/registerPsd'
+				let that=this;
+				that.$h5.post('code/verificode',{
+					user:that.number,
+					code:that.code
+				},(res)=>{
+					if(res.code==0){
+						uni.navigateTo({
+					          url:'/pages/register/registerPsd?phone='+this.number
+				         })
+					}else{
+						that.tipflag=true ;
+						that.tipMsg=res.message;
+						setTimeout(()=>{
+								that.tipflag=false
+						},3000)
+					}
+				})
+				
+			},
+			sendCode(){
+				let that=this;
+				that.$h5.post('code/sendcode',{
+					phone:that.number
+				},(res)=>{
+					if(res.code==0){
+						that.timeflag=true;
+						setInterval(()=>{
+							that.timeNumber=that.timeNumber-1;
+							if(that.timeNumber==1){
+								that.timeFlag=false;
+							}
+						},1000)
+					}else{
+						that.tipflag=true ;
+						that.tipMsg=res.message;
+						setTimeout(()=>{
+								that.tipflag=false
+						},3000)
+					}
+					   
+					
 				})
 			},
 			jumps(){
@@ -62,6 +107,24 @@
 	  color: #FFFFFF;
 	  text-align: center;
   }
+  
+	  .showtips{
+	  	  width: 400rpx;
+	  	  height: 100rpx;
+	  	  background: #fff;
+	  	  // opacity: 0.6;
+	  	  border-radius: 16rpx;
+	  	  position: fixed;
+	  	  left:175rpx;
+	  	  z-index:1000;
+	  	  top:500rpx;
+	  	  color: #000;
+	  	  font-size: 28rpx;
+	  	  line-height: 100rpx;
+	  	  text-align: center;
+	  	  
+	  
+    }
   .h5-content{
 	  margin: 300rpx 0 0 140rpx;
 	  .h5-titles{
@@ -81,6 +144,7 @@
 				  margin-right:20rpx;
 			  }
 			  .input{
+				  color: #fff;
 				  border-bottom: 2rpx solid #fff;
 				  box-sizing: border-box;
 				  width: 400rpx;

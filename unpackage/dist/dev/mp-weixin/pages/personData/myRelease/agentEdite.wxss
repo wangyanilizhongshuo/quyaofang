@@ -1,3 +1,10 @@
+
+page{   
+	 	/* padding-top: var(--status-bar-height) solid #fff;
+	 	box-sizing: border-box; */
+}
+	/*每个页面公共css */
+
 @charset "UTF-8";
 /**
  * 这里是uni-app内置的常用样式变量

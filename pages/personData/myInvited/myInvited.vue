@@ -40,13 +40,11 @@
 		},
 		methods: {
 			quits(){
-				let text = '不在网游SDK环境内，找不到方法';
-				 if(window.android && window.android.quit){
-					text = window.android.quit();
-				 }else{
-					 // alert('重新退出'')
-				 }
-			     return text;
+				if(window.android && window.android.quit){
+									 window.android.quit();
+				}else{
+									 window.webkit.messageHandlers.quit.postMessage(123);      
+				}
 			  },
 		}
 	}

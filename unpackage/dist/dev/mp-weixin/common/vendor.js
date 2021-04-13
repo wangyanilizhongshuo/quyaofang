@@ -7883,7 +7883,7 @@ module.exports = g;
 /***/ }),
 /* 4 */
 /*!******************************************!*\
-  !*** D:/gozhaofang/findHouse/pages.json ***!
+  !*** D:/gozhaofang/quyaofang/pages.json ***!
   \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7896,7 +7896,7 @@ module.exports = g;
 /* 7 */,
 /* 8 */
 /*!***************************************************!*\
-  !*** D:/gozhaofang/findHouse/common/crypto-js.js ***!
+  !*** D:/gozhaofang/quyaofang/common/crypto-js.js ***!
   \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -37313,7 +37313,7 @@ function randomFillSync (buf, offset, size) {
 /***/ }),
 /* 166 */
 /*!**********************************************!*\
-  !*** D:/gozhaofang/findHouse/common/util.js ***!
+  !*** D:/gozhaofang/quyaofang/common/util.js ***!
   \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -37324,13 +37324,13 @@ var _md = _interopRequireDefault(__webpack_require__(/*! @/common/md5.js */ 167)
 var _cryptoJs = _interopRequireDefault(__webpack_require__(/*! ../node_modules/crypto-js/crypto-js.js */ 168));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // 加密的方式
 // import CryptoJS from './crypto-js.js'
 
-
-var user_token = 'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05';
+// var user_token ='c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05'
 function setData(obj) {
   var that = this;
   var keys = [];
   var val, data;
   if (obj.user_token) {
+    // wx.setStorageSync('user_token',obj.user_token)
     wx.setStorageSync('token', obj.user_token);
   }
 
@@ -37410,7 +37410,7 @@ function createApiToken() {
   api_token = bin2Hex(encode_str);
   return api_token;
 }
-
+var user_token = wx.getStorageSync('token');
 // wx.setStorageSync('token','fb7952b57f0174f2342a1aba49371600f3451f71998a86bfcb88ca566440ff9a7daf70944f95cb0c46ec73d3fe2f050f75c1c082af5da54766834b0e979577d43527f1e1dbde11759d9d49f40ec442d2d35d354898b8ad4b9a3115a80769bf05');
 module.exports = {
   setData: setData,
@@ -37421,7 +37421,7 @@ module.exports = {
 /***/ }),
 /* 167 */
 /*!*********************************************!*\
-  !*** D:/gozhaofang/findHouse/common/md5.js ***!
+  !*** D:/gozhaofang/quyaofang/common/md5.js ***!
   \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -37689,7 +37689,7 @@ module.exports = {
 /***/ }),
 /* 168 */
 /*!*******************************************************************!*\
-  !*** D:/gozhaofang/findHouse/node_modules/crypto-js/crypto-js.js ***!
+  !*** D:/gozhaofang/quyaofang/node_modules/crypto-js/crypto-js.js ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -37760,7 +37760,7 @@ module.exports = {
 
     /*
         * Local polyfill of Object.create
-         */
+          */
 
     var create = Object.create || function () {
       function F() {}
@@ -39353,14 +39353,14 @@ module.exports = {
 
   /** @preserve
         (c) 2012 by Cédric Mesnil. All rights reserved.
-        	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-        	    - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+        
+        Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+        
+            - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
             - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-        	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         */
-
-
-
 
   (function (Math) {
     // Shortcuts
@@ -43881,7 +43881,7 @@ function normalizeComponent (
 /***/ }),
 /* 172 */
 /*!**********************************************!*\
-  !*** D:/gozhaofang/findHouse/common/ajax.js ***!
+  !*** D:/gozhaofang/quyaofang/common/ajax.js ***!
   \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -43956,8 +43956,8 @@ var request = {
           'Authorization': 'Bearer' },
 
         data: _objectSpread({
+          'user_token': uni.getStorageSync('token') },
 
-          'user_token': 'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05' },
         data),
 
 
@@ -44023,6 +44023,7 @@ var request = {
       },
       method: 'POST',
       data: _objectSpread({
+        // 'user_token':uni.getStorageSync('token'),
         'user_token': 'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05' },
       data),
 
@@ -44645,9 +44646,57 @@ request;exports.default = _default;
 /* 591 */,
 /* 592 */,
 /* 593 */,
-/* 594 */
+/* 594 */,
+/* 595 */,
+/* 596 */,
+/* 597 */,
+/* 598 */,
+/* 599 */,
+/* 600 */,
+/* 601 */,
+/* 602 */,
+/* 603 */,
+/* 604 */,
+/* 605 */,
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */
 /*!********************************************************************!*\
-  !*** D:/gozhaofang/findHouse/components/city-select/citySelect.js ***!
+  !*** D:/gozhaofang/quyaofang/components/city-select/citySelect.js ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

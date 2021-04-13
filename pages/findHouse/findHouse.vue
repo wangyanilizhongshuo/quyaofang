@@ -6,7 +6,7 @@
 				<view class="left"  @tap.stop="quits" >
 					<image class="img" src="/static/image/white-back.png"></image>
 				</view>
-				<view class="field">毛坯房</view>
+				<view class="field">{{titleName}}</view>
 			</view>
 			<view class="search-box">
 				<image class="search-img" src="../../static/image/search-search.png"></image>
@@ -61,7 +61,7 @@
 				descriteList:['电梯','车库'],
 				types:1,//1出租 2出售
 				classes:1,// 1：办公用房 2：毛坯房 3：公寓房 4：生成厂房 5：街面房 6：装修房
-				titleName:'毛坯房',
+				titleName:'办公用房',
 				// keyWords:'',
 				carePickList:[],
 				ordinaryList:[]
@@ -72,19 +72,21 @@
 		},
 		onLoad(options){
 		     this.setData(options);	
-				 if(this.types==1){
+				 if(this.classes==1){
 					 this.titleName=='办公用房'
-				 }else if(this.types==2){
+				 }else if(this.classes==2){
 					 this.titleName='毛坯房'
-				 }else if(this.types==3){
+				 }else if(this.classes==3){
 					 this.titleName='公寓房'
-				 }else if(this.types==4){
-					 this.titleName='生成厂房'
-				 }else if(this.types==5){
+				 }else if(this.classes==4){
+					 this.titleName='生产厂房'
+				 }else if(this.classes==5){
 					 this.titleName='街面房'
-				 }else if(this.types==6){
+				 }else if(this.classes==6){
 					 this.titleName='装修房'
 				 }
+				 // console.log(thsi.t)
+				console.log(this.titleName)
 			 uni.setNavigationBarTitle({
 			 	 title:this.titleName
 			 })
@@ -97,11 +99,11 @@
 			quits(){
 				let text = '不在网游SDK环境内，找不到方法';
 				 if(window.android && window.android.quit){
-					text = window.android.quit();
+					 window.android.quit();
 				 }else{
-					 // alert('重新退出'')
+					 window.webkit.messageHandlers.quit.postMessage(123);      
 				 }
-			     return text;
+			     
 			  },
 			// 跳转到详情页面
 			jumpSearch(){

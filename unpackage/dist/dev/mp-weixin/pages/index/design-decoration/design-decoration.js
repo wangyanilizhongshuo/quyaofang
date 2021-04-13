@@ -2,7 +2,7 @@
 
 /***/ 169:
 /*!************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/App.vue?vue&type=style&index=0&lang=css& ***!
+  !*** D:/gozhaofang/quyaofang/App.vue?vue&type=style&index=0&lang=css& ***!
   \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 170:
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/App.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/App.vue?vue&type=style&index=0&lang=css& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -31,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 173:
 /*!********************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/main.js?{"page":"pages%2Findex%2Fdesign-decoration%2Fdesign-decoration"} ***!
+  !*** D:/gozhaofang/quyaofang/main.js?{"page":"pages%2Findex%2Fdesign-decoration%2Fdesign-decoration"} ***!
   \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -47,7 +47,7 @@ createPage(_designDecoration.default);
 
 /***/ 174:
 /*!***********************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/design-decoration/design-decoration.vue ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/design-decoration/design-decoration.vue ***!
   \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -88,7 +88,7 @@ component.options.__file = "pages/index/design-decoration/design-decoration.vue"
 
 /***/ 175:
 /*!******************************************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/design-decoration/design-decoration.vue?vue&type=template&id=68be2b6e&scoped=true& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/design-decoration/design-decoration.vue?vue&type=template&id=68be2b6e&scoped=true& ***!
   \******************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 176:
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/design-decoration/design-decoration.vue?vue&type=template&id=68be2b6e&scoped=true& ***!
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/design-decoration/design-decoration.vue?vue&type=template&id=68be2b6e&scoped=true& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -137,7 +137,7 @@ render._withStripped = true
 
 /***/ 177:
 /*!************************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/design-decoration/design-decoration.vue?vue&type=script&lang=js& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/design-decoration/design-decoration.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -153,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 178:
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/design-decoration/design-decoration.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/design-decoration/design-decoration.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -242,8 +242,7 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ../../../App.vue */ 5)
 //
 //
 //
-var _default = { data: function data() {return { designList: '', decorateList: '' };}, onReachBottom: function onReachBottom() {console.log(123412);}, onLoad: function onLoad(options) {this.setData(options);this.getLists();}, methods: { quits: function quits() {var text = '不在网游SDK环境内，找不到方法';if (window.android && window.android.quit) {text = window.android.quit();} else {// alert('重新退出'')
-      }return text;}, getLists: function getLists() {var _this = this;this.$h5.post('fitment/fintmentlist', { type: 0 }, function (res) {if (res.code == 0) {_this.designList = res.data;_this.designList.map(function (res1) {res1.house_cover = _App.default.globalData.img + res1.house_cover;});}});this.$h5.post('fitment/fintmentlist', { type: 1 }, function (res) {if (res.code == 0) {
+var _default = { data: function data() {return { designList: '', decorateList: '' };}, onReachBottom: function onReachBottom() {console.log(123412);}, onLoad: function onLoad(options) {this.setData(options);this.getLists();}, methods: { quits: function quits() {var text = '不在网游SDK环境内，找不到方法';if (window.android && window.android.quit) {window.android.quit();} else {window.webkit.messageHandlers.quit.postMessage(123);}}, getLists: function getLists() {var _this = this;this.$h5.post('fitment/fintmentlist', { type: 0 }, function (res) {if (res.code == 0) {_this.designList = res.data;_this.designList.map(function (res1) {res1.house_cover = _App.default.globalData.img + res1.house_cover;});}});this.$h5.post('fitment/fintmentlist', { type: 1 }, function (res) {if (res.code == 0) {
           _this.decorateList = res.data;
           _this.decorateList.map(function (res1) {
             res1.house_cover = _App.default.globalData.img + res1.house_cover;
@@ -273,7 +272,7 @@ var _default = { data: function data() {return { designList: '', decorateList: '
 
 /***/ 179:
 /*!*********************************************************************************************************************************************!*\
-  !*** D:/gozhaofang/findHouse/pages/index/design-decoration/design-decoration.vue?vue&type=style&index=0&id=68be2b6e&scoped=true&lang=scss& ***!
+  !*** D:/gozhaofang/quyaofang/pages/index/design-decoration/design-decoration.vue?vue&type=style&index=0&id=68be2b6e&scoped=true&lang=scss& ***!
   \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -289,7 +288,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 180:
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/pages/index/design-decoration/design-decoration.vue?vue&type=style&index=0&id=68be2b6e&scoped=true&lang=scss& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/pages/index/design-decoration/design-decoration.vue?vue&type=style&index=0&id=68be2b6e&scoped=true&lang=scss& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -302,7 +301,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 5:
 /*!***************************************!*\
-  !*** D:/gozhaofang/findHouse/App.vue ***!
+  !*** D:/gozhaofang/quyaofang/App.vue ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -342,7 +341,7 @@ component.options.__file = "App.vue"
 
 /***/ 6:
 /*!****************************************************************!*\
-  !*** D:/gozhaofang/findHouse/App.vue?vue&type=script&lang=js& ***!
+  !*** D:/gozhaofang/quyaofang/App.vue?vue&type=script&lang=js& ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -358,7 +357,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 7:
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/findHouse/App.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/gozhaofang/quyaofang/App.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

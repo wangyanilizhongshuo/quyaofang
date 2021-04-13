@@ -3,14 +3,46 @@
 		 <view class="h5-title">要房么</view>
 		<view class="h5-content">
 				<view class="h5-titles">APP下载</view>
-				<image class="iosBox style1"  src="../../static/image/registerIOS.png"></image>
-				<image class="andBox style1" src="../../static/image/registerAndroid.png"></image>
-				
+				<image class="iosBox style1" @tap.stop="getchoice(1)"  src="../../static/image/registerIOS.png"></image>
+				<image class="andBox style1" @tap.stop="getchoice(2)" src="../../static/image/registerAndroid.png"></image>
+				<web-view v-if="occurs1"  :src="url1"></web-view>
+				<web-view v-if="occurs2"  :src="url2"></web-view>
 		</view>
 	</view>
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				 url1:'',
+				 url2:'',
+				 url:'http://www.baidu.com',
+				 occurs1:false,
+				 occurs2:false
+				}
+		},
+		onLoad(){
+			this.getData();
+		},
+		methods:{
+			getchoice(types){
+				if(types==1){
+					this.occurs1=true;
+				}else if(types==2){
+					this.occurs2=true;
+				}
+			},
+			getData(){
+				this.$h5.post('index/downloadurl',{},(res)=>{
+					if(res.code ==0){
+						this.url1=res.data.android_url;
+						this.url2=res.data.ios_url;
+					}
+				})
+			}
+		}
+	}
 </script>
 
 <style scoped lang="scss">

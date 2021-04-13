@@ -39,11 +39,10 @@
 			quits(){
 				let text = '不在网游SDK环境内，找不到方法';
 				 if(window.android && window.android.quit){
-					text = window.android.quit();
+					 window.android.quit();
 				 }else{
-					 // alert('重新退出'')
+					 window.webkit.messageHandlers.quit.postMessage(123);      
 				 }
-			     return text;
 			  },
 			// 申请经纪人跳转
 			jumps(){

@@ -380,6 +380,22 @@
 		    } 
         
       
+        ,{
+            "path" : "pages/index/houseDetailP/houseDetail",
+            "style" :                                                                                    
+            {
+                "navigationStyle":"custom"
+            }
+            
+        }
+		,{
+		    "path" : "pages/index/houseDetailP/houseDetail1",
+		    "style" :                                                                                    
+		    {
+		        "navigationStyle":"custom"
+		    }
+		    
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

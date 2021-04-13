@@ -17,7 +17,7 @@
 				  <text>我已注册，去下载APP</text>
 				  <image  class="logo" src="../../static/image/regiter-go.png"></image>
 			  </view>
-			  <view class="nextGo" @tap.stop="nextSteps">下一步</view>
+			  <view class="nextGo" @tap.stop="getRegister">下一步</view>
 		  </view>
 	</view>
 </template>
@@ -27,8 +27,13 @@
 		data() {
 			return {
 				password1:'',
-				password2:''
+				password2:'',
+				phone:''
 			}
+		},
+		onLoad(options){
+			this.setData(options)
+			
 		},
 		methods: {
 			jumps(){
@@ -36,11 +41,28 @@
 					url:'/pages/register/registerDown'
 				})
 			},
-			nextSteps(){
-				uni.navigateTo({
-					url:'/pages/register/registerDown'
+			getRegister(){
+				let that=this;
+				if(that.password1!==that.password2){
+					uni.showToast({title: '两次密码不一样',icon:"none"});
+					return false
+				}else if(that.password1=='' || that.password2==''){
+					uni.showToast({title: '重新填写密码',icon:"none"});
+					return false
+				}
+				that.$h5.post('login/register',{
+					user:that.phone,
+					pwd:that.password1,
+					vpwd:that.password2
+				},(res)=>{
+					if(res.code ==0){
+						uni.navigateTo({
+							url:'/pages/register/registerDown'
+						})
+					}
 				})
-			}
+			},
+			
 		}
 	}
 </script>
@@ -83,6 +105,7 @@
 				  border-bottom: 2rpx solid #fff;
 				  box-sizing: border-box;
 				  width: 400rpx;
+				  color: #fff;
 				  line-height: 60rpx;
 				  padding-bottom:15rpx;
 			  }

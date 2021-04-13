@@ -1,29 +1,29 @@
 <template>
 	<view class="h5-meg">
-		fasdfsadfasdf
+		
 		<view class="zw"></view>
 		<view class="news-title title">
 			<view class="left"  @tap.stop="quits" >
 				<image class="img"src="/static/image/back.png"></image>
 			</view>
-			<view class="field">{{name}}</view>
+			
 		</view>
 		<view class="zwPosition"></view>
 		<view class="contents" >
-			<view class="title-msg">
-				<view class="left">
-					<image class="imgs  left-small" src="../../static/image/wangyibo.jpg"></image>
+			<!-- <view class="title-msg" v-for="(item,index) in msgList" :key="index">
+				<view class="left" v-if="item.type=='房东'">
+					<image class="imgs  left-small" :src="item.landimg"></image>
 				    <view  class="right-small">
-					  <view class="up">刘先生</view>
+					  <view class="up">{{item.nick}}</view>
 					  <view class="down">15233434243</view>
 					</view>
 				</view>
 			    <image  class="right" src="../../static/image/call.png"></image>
-			</view>
+			</view> -->
 			<view class="lists-box">
-				<view class="lists" v-for="(item,index) in dataList" :key="index">
-					<image class="imgs" :src="item.url"></image>
-					<view class="wordmsg">{{item.word}}</view>
+				<view class="lists"  >
+					<image class="imgs" :src="msgList.h_img"></image>
+					<view class="wordmsg">{{msgList.content[0].content}}</view>
 				</view>
 			</view>
 		</view>
@@ -34,37 +34,45 @@
 </template>
 
 <script>
+	import app from '../../App.vue'
 	export default {
 		  data() {
 		       
 		        return {
 		            name:'李先生',
-					dataList:[{
-						url:'../../static/image/wangyibo.jpg',
-						word:'你好，我是一个好孩子。'
-					},
-					{
-						url:'../../static/image/wangyibo1.jpg',
-						word:'你好，我是一个好孩子。你好，我是一个好孩子'
-					},
-					{
-						url:'../../static/image/wangyibo2.jpg',
-						word:'你好，我是一个好孩子。我是一个好孩子你好，我是一个好孩子。我是一个好孩子'
-					},
-					]
+					msgList:[],
+					id:''
 		        }
 		    },
-		
+		onLoad(options){
+			this.setData(options)
+			this.getMsg();
+			console.log(123)
+		},
 		methods: {
 			quits(){
-				let text = '不在网游SDK环境内，找不到方法';
 				 if(window.android && window.android.quit){
-					text = window.android.quit();
+					 window.android.quit();
 				 }else{
-					 // alert('重新退出'')
+					 window.webkit.messageHandlers.quit.postMessage(123);      
 				 }
-			     return text;
 			  },
+			  getMsg(){
+				  let that=this;
+				  
+				  that.$h5.post('Message/messagedetail',{
+					  id:that.id
+					  // id:19
+				  },(res)=>{
+					  if(res.code==0){
+						  that.msgList=res.data;
+						  that.msgList.h_img =app.globalData.img+that.msgList.h_img;
+						 
+					  }else{
+						  
+					  }
+				  })
+			  }
 			}
 	}
 </script>
