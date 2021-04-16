@@ -115,7 +115,7 @@
 			</view>
 			<view class="down" @tap="shareDiaFlag=false">取消</view>
 		</view>
-		
+		<view class="showtips" v-if="tipflag">{{tipMsg}}</view>
 </view>	</view>
 </template>
 <script>
@@ -125,6 +125,8 @@
 	export default {
 		data() {
 			return {
+				tipflag:false,
+				tipMsg:'',
 				 imgList: [],
 				fieldList:[],
 				
@@ -213,7 +215,14 @@
 					 h_type:that.types
 				 },(res)=>{
 					 if(res.code ==0){
-						 that.maskFlag=false
+						 that.maskFlag=false;
+					 }else{
+						 that.tipflag=true ;
+						 that.tipMsg=res.message;
+						 setTimeout(()=>{
+						 		that.tipflag=false;
+								that.maskFlag=false;
+						 },3000)
 					 }
 				 })
 				
@@ -479,6 +488,23 @@
 	}
 	
 }
+.showtips{
+	  	  width: 400rpx;
+	  	  height: 100rpx;
+	  	  background:#000 ;
+	  	  opacity: 0.6;
+	  	  border-radius: 16rpx;
+	  	  position: fixed;
+	  	  left:175rpx;
+	  	  z-index:1000;
+	  	  top:500rpx;
+	  	  color: #fff;
+	  	  font-size: 28rpx;
+	  	  line-height: 100rpx;
+	  	  text-align: center;
+	  	  
+	  
+	}
 .h5-content{
    .content-second{
 	   width: 750rpx;

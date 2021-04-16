@@ -35,6 +35,7 @@
 				<view class="left">联系电话</view>
 				<view class="right">{{personMsg.h_name}}</view>
 			</view>
+			<view class="hbyOccurFlag" v-if="tipsFlag">{{tipsMsg}}</view>
 		</view>
 	</view>
 </template>
@@ -44,7 +45,10 @@
 			return {
 				// 图片地址
 				ImageUrl:'',
-				personMsg:{}
+				personMsg:{},
+				tipsFlag:false,
+				tipsMsg:''
+				
 			}
 		},
 		onReachBottom(){
@@ -87,7 +91,7 @@
 						sourceType: ['album', 'camera'], //从相册选择
 						success: function(res) {
 							const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
-							// _that.ImageUrl=tempFilePaths;
+							_that.ImageUrl=tempFilePaths;
 							tempFilePaths.map(sos => {
 						uni.uploadFile({
 								url: 'https://yaofangme.hzbixin.cn/Updimg/upload',
@@ -101,13 +105,27 @@
 							success: function(datas) {
 								let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 								let aa = results.data[0];
-								_that.$h5.post('user/userphoto',{
+								if(results.code ==0){
+									_that.$h5.post('user/userphoto',{
 									userimg:aa
-								},(res)=>{
-									if(res.code ==0){
-										_that.getData();
-									}
-								})
+									  },(res3)=>{
+										if(res3.code ==0){
+											_that.tipsFlag=true;
+											_that.tipsMsg=res3.message
+											setTimeout(()=>{
+												_that.tipsFlag=false;
+											},2500)
+											_that.getData();
+										 }
+									 })
+								}else{
+										_that.tipsFlag=true;
+								       _that.tipsMsg=results.message
+										setTimeout(()=>{
+											_that.tipsFlag=false;
+										},2500)
+								}
+								
 							},
 							fail: function(datas) {
 								console.log(datas)
@@ -137,6 +155,19 @@
 		top:0rpx;
 		left:0rpx;
 		background-color: white;
+	}
+	.hbyOccurFlag{
+		position: absolute;
+		top:500rpx;
+		left:150rpx;
+		background-color: green;
+		width:450rpx;height:100rpx;
+		line-height: 100rpx;
+		background-color: #000;
+		color:#fff;
+		text-align: center;
+		opacity: 0.7;
+		border-radius: 20rpx;
 	}
 	.personData{
 		height: 100vh;

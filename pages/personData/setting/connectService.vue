@@ -4,7 +4,7 @@
 		 			 <view class="left" @tap.stop="back">
 		 				  <image class="img" src="/static/image/back.png"></image>
 		 			 </view>
-		 			 <view class="field">意见反馈</view>
+		 			 <view class="field">联系客服</view>
 		 		</view>
 		  <view class="station"></view>
 		 <view class="content">
@@ -13,6 +13,7 @@
 			 <image v-if="photoList" class="img-bg" :src="photoList[0]" @tap.stop="getImage"></image>
 		 </view>
 		 <view class="btnSubmit" @tap="submit">提交</view>
+		 <view class="hbyOccurFlag" v-if="tipsFlag">{{tipsMsg}}</view>
 	 </view>
 </template>
 
@@ -23,7 +24,9 @@
 				photoList:'',
 				imageFlag:false,
 				textValue:'',
-				upUrlList:[]
+				upUrlList:[],
+				tipsFlag:false,
+				tipsMsg:''
 			}
 		},
 		onLoad(){
@@ -36,21 +39,29 @@
 				})
 			},
 			getImage(){
+				
 				let _that = this;
+				_that.tipsMsg='进来了'
+				setTimeout(()=>{
+					_that.tipsFlag=false;
+				},2500)
 				uni.chooseImage({
 					count: 1, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
 					sourceType: ['album', 'camera'], //从相册选择
 					success: function(res) {
+						_that.tipsMsg='成功'
+						setTimeout(()=>{
+							_that.tipsFlag=false;
+						},2500)
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						_that.photoList= res.tempFilePaths;
-						console.log(_that.photoList)
+						
 						tempFilePaths.map(sos => {
 							uni.uploadFile({
 								url: 'https://yaofangme.hzbixin.cn/Updimg/upload',
 								filePath: sos,
 								name: 'file',
-								// header:{"Content-Type": "multipart/form-data"},
 								formData: {
 									  type:'service',
 									 'user_token':_that.user_token
@@ -58,13 +69,32 @@
 								success: function(datas) {
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let aa = results.data[0];
-									_that.upUrlList.push(aa)
+									if(results.code ==0){
+											_that.upUrlList.push(aa)
+
+									}else{
+										_that.tipsFlag=true;
+										_that.tipsMsg='图片尺寸太大，重新上传'
+										setTimeout(()=>{
+											_that.tipsFlag=false;
+										},2500)
+									}
+									
 								},
 								fail: function(datas) {}
 							})
 						})
+					},
+					fail: function (res){
+						_that.tipsFlag=true;
+						_that.tipsMsg='失败'
+						setTimeout(()=>{
+							_that.tipsFlag=false;
+						},2500)
 					}
 				});
+			
+								
 			},
 			submit(){
 				let that=this;
@@ -74,9 +104,20 @@
 					img:that.upUrlList
 				},(res)=>{
 					if(res.code ==0){
+						that.tipsFlag=true;
+						that.tipsMsg=res.message
+						setTimeout(()=>{
+							that.tipsFlag=false;
+						},2500)
 						uni.navigateTo({
 				         	url:'/pages/personData/setting/setting'
 				        })
+					}else{
+						that.tipsFlag=true;
+						that.tipsMsg=res.message
+						setTimeout(()=>{
+							that.tipsFlag=false;
+						},2500)
 					}
 				})
 				
@@ -153,5 +194,19 @@
 		position: absolute;;
 		left:0rpx;
 		bottom: 0rpx;
+	}
+	.hbyOccurFlag{
+		position: absolute;
+		top:500rpx;
+		left:150rpx;
+		background-color: green;
+		width:450rpx;
+		height:100rpx;
+		line-height: 100rpx;
+		background-color: #000;
+		color:#fff;
+		text-align: center;
+		opacity: 0.7;
+		border-radius: 20rpx;
 	}
 </style>

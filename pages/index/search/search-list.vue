@@ -6,7 +6,7 @@
 		<!-- <view  class="search-content"> -->
 			<image @tap.stop="back"  class="img-back" src="/static/image/search-back.png"></image>
 			<view class="uni-input" >
-				<input  v-model="inputs" confirm-type="search" @confirm="search" class="input" placeholder="输入更多的关键词" placeholder-style="color:#999999;font-size:28rpx"/>
+				<input  v-model="inputs" type="text" confirm-type="search" @confirm="search" class="input" placeholder="输入更多的关键词" placeholder-style="color:#999999;font-size:28rpx"/>
 				<image  @tap.stop="search" class="search" src="/static/image/search-search.png"></image>
 			</view>
 		</view>

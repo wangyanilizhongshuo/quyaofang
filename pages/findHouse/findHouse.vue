@@ -19,7 +19,7 @@
 				 <view class="title-filed" >精选房源</view>
 				 <view class="list-box">
 					 <view class="list"  v-for="(item,index) in carePickList" :key="index"   @tap="jumpDetail(item.id)" >
-						 <image class="left" :src="item.h_img" ></image>
+						 <image class="left" :src="item.h_img " ></image>
 						 <view class="right">
 							 <view class="first-line">
 								 <text class="signal-box">优质好房</text>
@@ -36,7 +36,7 @@
 				  <view class="title-filed" >房源列表</view>
 				  <view class="list-box">
 					  <view class=" list listss"  v-for="(item,index) in ordinaryList" :key="index"  @tap="jumpDetail(item.id)">
-						  <image class="left-img" :src="item.r_cover"></image>
+						  <image class="left-img" :src="item.r_cover ||item.h_cover"></image>
 						  <view class="right rights">
 							  <view class="first-line">{{item.r_area}}{{item.r_houses}}</view>
 							  <view class="fourth-line">{{item.r_mj}}㎡</view>
@@ -137,8 +137,9 @@
 						that.carePickList=res.data;
 						that.carePickList.map(res=>{
 							res.h_img=app.globalData.img+res.h_img;
-							console.log(res.h_img)
+							
 						})
+						console.log(that.carePickList,345)
 					}
 				})
 	
@@ -156,10 +157,17 @@
 				},(res)=>{
 					if(res.code==0){
 						that.ordinaryList=res.data;
-						that.ordinaryList.map(res=>{
-							res.r_cover=app.globalData.img+res.r_cover;
-							console.log(res.h_img)
-						})
+						if(that.types==2){
+							that.ordinaryList.map(res=>{
+							     res.h_cover=app.globalData.img+res.h_cover;
+						   })
+						}else{
+							that.ordinaryList.map(res=>{
+								 res.r_cover=app.globalData.img+res.r_cover;
+							})
+						}
+						
+						console.log(that.ordinaryList,123)
 						
 					}
 				})

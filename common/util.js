@@ -3,7 +3,6 @@ import md5 from "@/common/md5.js";
 import CryptoJS from '../node_modules/crypto-js/crypto-js.js'
 // import CryptoJS from './crypto-js.js'
 
-// var user_token ='c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05'
 function setData(obj) {
     let that = this;
     let keys = [];
@@ -90,6 +89,7 @@ function createApiToken(){
 	  return api_token
    }
 var user_token=wx.getStorageSync('token');
+// var user_token ='c4aaaaaaaaee825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05'
 // wx.setStorageSync('token','fb7952b57f0174f2342a1aba49371600f3451f71998a86bfcb88ca566440ff9a7daf70944f95cb0c46ec73d3fe2f050f75c1c082af5da54766834b0e979577d43527f1e1dbde11759d9d49f40ec442d2d35d354898b8ad4b9a3115a80769bf05');
 module.exports = {
 	setData,

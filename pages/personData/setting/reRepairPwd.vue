@@ -61,7 +61,7 @@
 					 that.password='';
 					 that.rePassword='';
 					 setTimeout(()=>{
-						  that.tipsFlag=true;
+						  that.tipsFlag=false;
 					 },2500)
 					return false; 	
 				}
@@ -73,16 +73,17 @@
 						that.tipsFlag=true;
 						that.tipsMsg='密码设置成功' ;
 						setTimeout(()=>{
-								 that.tipsFlag=true;
+								 that.tipsFlag=false;
 						},2500)
 						uni.navigateTo({
 					        url:'/pages/personData/setting/setting'
 				           })
 					}else{
+						console.log(123456)
 						that.tipsFlag=true;
 						that.tipsMsg=res.message ;
 						setTimeout(()=>{
-								 that.tipsFlag=true;
+								 that.tipsFlag=false;
 						},2500)
 					}
 				})
@@ -108,7 +109,7 @@
 	.hbyOccurFlag{
 			position: absolute;
 			top:500rpx;
-			left:100rpx;
+			left:150rpx;
 			background-color: green;
 			width:450rpx;height:130rpx;
 			line-height: 130rpx;

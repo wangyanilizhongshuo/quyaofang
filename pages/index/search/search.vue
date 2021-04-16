@@ -4,7 +4,7 @@
 		<view  class="search-content" :style="{height:heights,'margin-top':marginTop}">
 			<image @tap.stop="quits"  class="img-back" src="../../../static/image/search-back.png"></image>
 			<view class="uni-input" >
-				<input  v-model="inputs" confirm-type="search" @confirm="jumps" class="input" placeholder="输入更多的关键词" placeholder-style="color:#999999;font-size:28rpx"/>
+				<input  v-model="inputs" type="text" confirm-type="search" @confirm="jumps" class="input" placeholder="输入更多的关键词" placeholder-style="color:#999999;font-size:28rpx"/>
 				<image  @tap.stop="jumps" class="search" src="../../../static/image/search-search.png"></image>
 			</view>
 		</view>

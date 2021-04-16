@@ -63,7 +63,7 @@
    			  </view>
    			  <view class="connect list">
    				   <view class="field">联系方式</view>
-   				   <input class="value" name="phone" :style="phone!=''?'color:#303133':''"  v-model="phone"   placeholder="请输入电话" />
+   				   <input class="value" type="number" name="phone" :style="phone!=''?'color:#303133':''"  v-model="phone"   placeholder="请输入电话" />
    			       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
    			  </view>
    			  <view class="wishPrice list">
@@ -76,7 +76,7 @@
    			  </view>
    			  <view class="wishleaseTime list">
    				   <view class="field">租期</view>
-   				   <input class="value" style="width:400rpx" type="number"  name="leaseTime" :style="leaseTime!=''?'color:#303133':''" v-model="leaseTime"   placeholder="请输入租期" />
+   				   <input class="value"  style="width:400rpx" type="number"  name="leaseTime" :style="leaseTime!=''?'color:#303133':''" v-model="leaseTime"   placeholder="请输入租期" />
    			       <view style="width:80rpx;color:#888;text-align: center;"  class="" >月</view> 
 				   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
    			  </view>
@@ -113,18 +113,21 @@
    			  </view>
    			  <view class="houseAreas list"  v-if="houseTypeStyle =='生产厂房'">
    				   <view class="field">占地面积</view>
-   				   <input class="value" name="houseArea" :style="houseArea!=''?'color:#303133':''"  v-model="houseArea"   placeholder="请输入占地面积" />
-   			       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+   				   <input class="value" style="width:400rpx" name="houseArea" type="number" :style="houseArea!=''?'color:#303133':''"  v-model="houseArea"   placeholder="请输入占地面积" />
+   			       <view style="width:80rpx;color:#888"  class="" >㎡</view>
+				   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
    			  </view>
    			  <view class="workShops list"  v-if="houseTypeStyle =='生产厂房'">
    				   <view class="field">车间面积</view>
-   				   <input class="value" name="workShop" :style="workShop!=''?'color:#303133':''"  v-model="workShop"   placeholder="请输入车间面积" />
-   			       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+   				   <input class="value" style="width:400rpx"name="workShop" type="number" :style="workShop!=''?'color:#303133':''"  v-model="workShop"   placeholder="请输入车间面积" />
+   			       <view style="width:80rpx;color:#888"  class="" >㎡</view>
+				   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
    			  </view>
    			  <view class="workOffices list"  v-if="houseTypeStyle =='生产厂房'">
    				   <view class="field">办公面积</view>
-   				   <input class="value" name="workOffice" :style="workOffice!=''?'color:#303133':''"  v-model="workOffice"   placeholder="请输入办公面积" />
-   			       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+   				   <input class="value"  style="width:400rpx" name="workOffice" type="number" :style="workOffice!=''?'color:#303133':''"  v-model="workOffice"   placeholder="请输入办公面积" />
+   			       <view style="width:80rpx;color:#888"  class="" >㎡</view>
+				   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
    			  </view>
    			  <!-- 生产厂房  workOffice-->
    			  <!-- 生产厂房 -->
@@ -137,8 +140,9 @@
    			  </view>
    			  <view class="houseAreas list" v-if="houseTypeStyle !='生产厂房'">
    				   <view class="field">面积</view>
-   				   <input class="value" name="houseArea" :style="houseArea!=''?'color:#303133':''"  v-model="houseArea"   placeholder="请输入面积" />
-   			       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+   				   <input class="value" style="width:400rpx" type="number" name="houseArea" :style="houseArea!=''?'color:#303133':''"  v-model="houseArea"   placeholder="请输入面积" />
+   			       <view style="width:80rpx;color:#888"  class="" >㎡</view>
+				   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
    			  </view>
    			  <view class="directions list"  v-if="houseTypeStyle !='生产厂房'">
    			  	   <view class="field">朝向</view>
@@ -163,7 +167,7 @@
    			  <!-- 办公用房 -->
    			<view class="houseFloor list" v-if="lcFlag">
 			   <view class="field">楼层</view>
-			   <input class="value" name="floor"  v-model="houseFloor" :style="houseFloor!=''?'color:#303133':''" maxlength="8"  placeholder="例如:独栋/共一层"  />
+			   <input class="value" name="floor" type="number"  v-model="houseFloor" :style="houseFloor!=''?'color:#303133':''" maxlength="8"  placeholder="例如:独栋/共一层"  />
    			     <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
    			</view>
    			<view class="house-arrow list" v-if="!lcFlag">
@@ -263,6 +267,7 @@
    					   </view>
    				  </view>
    			  </view>
+			  <view class="showtips" v-if="tipflag">{{tipMsg}}</view>
    			   <button class="btn" form-type="submit">提交</button>
    		 </form>
    	 </view>
@@ -281,6 +286,8 @@
 				//房屋种类
 				houseTypeStyle:'',
 				date: currentDate,
+				tipflag:false,
+				tipMsg:'',
 				//所在城市
 				city:'',
 				// 区域
@@ -438,6 +445,14 @@
 				 let msg=e.detail.value;
 				 console.log(that.upUrlList);
 				 let datass={  };
+				 if(msg.phone.length!==11){
+						 that.tipflag=true ;
+						 that.tipMsg='手机格式填写错误';
+						 setTimeout(()=>{
+								that.tipflag=false
+						 },3000)
+						return false
+				 }
 				 let datas={
 					 // 房屋出租类型
 					 r_type:that.houseNumber,
@@ -614,6 +629,12 @@
 									uni.navigateTo({
 										url:'/pages/index/submitSuccess/submitSuccess'
 									})
+								 }else{
+									 that.tipflag=true ;
+									 that.tipMsg=res.message;
+									 setTimeout(()=>{
+									 		that.tipflag=false
+									 },3000)
 								 }
 				                 console.log('success')
 				 			 })
@@ -648,7 +669,19 @@
 								success: function(datas) {
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let aa = results.data[0];
-									_that.upUrlList.push(aa)
+									console.log(aa)
+									if(results.code ==0){
+										_that.upUrlList.push(aa)
+										console.log(aa,'cuole')
+									}else{
+										console.log(aa,'duilw')
+										_that.tipflag=true ;
+										_that.tipMsg=aa.message;
+										setTimeout(()=>{
+												_that.tipflag=false
+										},3000)
+									}
+									
 				
 								},
 								fail: function(datas) {}
@@ -672,7 +705,6 @@
 				this.photoList = arr;
 				// 上传的图片url
 				 this.upUrlList.splice(index, 1);
-				 console.log(this.upUrlList)
 			},
 			// 种类的选择
 			PickerChange(e,type) {
@@ -885,5 +917,22 @@
 		 color:#fff;
 		 font-size: 30rpx;
 		 border-radius: 0;
+	}
+	.showtips{
+	  	  width: 400rpx;
+	  	  height: 100rpx;
+	  	  background:#000 ;
+	  	  opacity: 0.6;
+	  	  border-radius: 16rpx;
+	  	  position: fixed;
+	  	  left:175rpx;
+	  	  z-index:1000;
+	  	  top:500rpx;
+	  	  color: #fff;
+	  	  font-size: 28rpx;
+	  	  line-height: 100rpx;
+	  	  text-align: center;
+	  	  
+	  
 	}
 </style>

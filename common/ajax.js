@@ -1,19 +1,9 @@
 import util from "./util.js";
 let siteroot="https://yaofangme.hzbixin.cn/";
-// if(process.env.NODE_ENV === 'development'){
-// 	// 开发环境
-//     siteroot="https://test.china-matcha.com";
-// }else{
-// 	// 生产环境
-// 	siteroot="https://mall.china-matcha.com";
-// }
-// let api_root=siteroot+'/api/';
 let api_root=siteroot;
 //token放在信息中
 let request = {
-    /**
-       * 显示成功提示框
-       */
+    /*** 显示成功提示框 */
       showSuccess(msg, callback) {
         uni.showToast({
           title: msg,
@@ -27,9 +17,7 @@ let request = {
           }
         });
       },
-      /**
-       * 显示失败提示框
-       */
+      /** * 显示失败提示框 */
       showError:function(msg, callback) {
             uni.showModal({
                   title: '友情提示',

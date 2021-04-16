@@ -12,7 +12,7 @@
 			 <form class="sale-form" @submit="formSubmit">
 				  <view class="houseType list">
 					   <view class="field">房屋种类</view>
-					   <picker   class="value"  value="index" :range="houseTypeList" @change="PickerChange($event,1)">
+					   <picker   class="value"  :value="index" :range="houseTypeList" @change="PickerChange($event,1)">
 							 <input class="uni-input" :style="houseTypeStyle != ''? 'color:#303133':''"  :disabled="true"  name="houseTypeStyle" v-model="houseTypeStyle" placeholder="请选择房屋种类"/>
 					         
 					   </picker>
@@ -21,7 +21,7 @@
 				  </view>
 				  <view class="citys list">
 					   <view class="field">所在城市</view>
-					   <picker   class="value" value="index" @change="PickerChange($event,2)"  :range="cityList">
+					   <picker   class="value" :value="index" @change="PickerChange($event,2)"  :range="cityList">
 					   			<input :style="city != ''? 'color:#303133':''" class="uni-input" :disabled="true"  name="city" v-model="city" placeholder="请选择所在城市"/>
 					    </picker>
 						
@@ -30,7 +30,7 @@
 				  </view>
 				  <view class="region list">
 					   <view class="field">所在区域</view>
-					   <picker   class="value" @change="PickerChange($event,3)" value="index.district_name" :range="regionList">
+					   <picker   class="value" @change="PickerChange($event,3)" :value="index" :range="regionList">
 					   			<input :style="region != ''? 'color:#303133':''" class="uni-input" :disabled="true"  name="region" v-model="region" placeholder="请选择所在区域"/>
 					    </picker>
 					   
@@ -42,7 +42,7 @@
 						<view class="value">
 							<input :style="smallArea != ''? 'color:#303133':''" class="uni-input" @input="getxiaoquList"   name="smallArea" v-model="smallArea" placeholder="请选择所在小区"/>
 						</view>
-						<picker    @change="PickerChange($event,10)" value="index" :range="smallAreaList" >
+						<picker    @change="PickerChange($event,10)" :value="index" :range="smallAreaList" >
 				             <image class="arrow"  src="../../../static/image/right-gray.png" ></image>
 						 </picker>
 				  </view>
@@ -58,42 +58,46 @@
 				  </view>
 				  <view class="connect list">
 					   <view class="field">联系方式</view>
-					   <input class="value" name="phone" :style="phone!=''?'color:#303133':''"  v-model="phone"   placeholder="请输入电话" />
+					   <input class="value" type="number" name="phone" :style="phone!=''?'color:#303133':''"  v-model="phone"   placeholder="请输入电话" />
 				       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
 				  </view>
 				  <view class="wishPrice list">
 					   <view class="field">期望售价</view>
-					   <input class="value" style="width:400rpx" name="wishPrice"  :style="wishPriceValue!=''?'color:#303133':''" v-model="wishPriceValue"  placeholder="请输入期望售价" />
+					   <input class="value" type="number" style="width:400rpx" name="wishPrice"  :style="wishPriceValue!=''?'color:#303133':''" v-model="wishPriceValue"  placeholder="请输入期望售价" />
 					   <view style="width:80rpx;color:#888"  class="" >万元</view>
 				  </view>
 				  <!-- 生产厂房 -->
 				  
 				   <view class="build-area list" v-if="houseTypeStyle=='生产厂房'">
 					   <view class="field">占地面积</view>
-					   <input class="value"  name="areaCover" v-model="areaCover"  :style="areaCover!=''?'color:#303133':''"  placeholder="请输入占地面积" />
-				       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+					   <input class="value" type="number" style="width:400rpx"  name="areaCover" v-model="areaCover"  :style="areaCover!=''?'color:#303133':''"  placeholder="请输入占地面积" />
+				       <view style="width:80rpx;color:#888"  class="" >㎡</view>
+					   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
 				   </view>
 				   <view class="build-area list" v-if="houseTypeStyle=='生产厂房'">
 					   <view class="field">车间面积</view>
-					   <input class="value"  name="workShopCover" v-model="workShopCover"  :style="workShopCover!=''?'color:#303133':''"  placeholder="请输入车间面积" />
-				       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+					   <input class="value"  type="number" style="width:400rpx" name="workShopCover" v-model="workShopCover"  :style="workShopCover!=''?'color:#303133':''"  placeholder="请输入车间面积" />
+				       <view style="width:80rpx;color:#888"  class="" >㎡</view>
+					   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
 				   </view>
 				   <view class="build-area list" v-if="houseTypeStyle=='生产厂房'">
 						   <view class="field">办公面积</view>
-						   <input class="value"  name="officeSpace" v-model="officeSpace"  :style="officeSpace!=''?'color:#303133':''"  placeholder="请输入办公面积" />
-				           <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+						   <input class="value" type="number" style="width:400rpx"  name="officeSpace" v-model="officeSpace"  :style="officeSpace!=''?'color:#303133':''"  placeholder="请输入办公面积" />
+				           <view style="width:80rpx;color:#888"  class="" >㎡</view>
+						   <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
 				   </view>
 				  <!--  生产厂房 -->
 				  
 				  
 				  <view class="build-area list" v-if="houseTypeStyle!='生产厂房'">
 					   <view class="field">建筑面积</view>
-					   <input class="value"  name="buildArea" v-model="buildAreaValue"  :style="buildAreaValue!=''?'color:#303133':''"  placeholder="请输入房屋面积" />
-				       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
+					   <input class="value" type="number" style="width:400rpx" name="buildArea" v-model="buildAreaValue"  :style="buildAreaValue!=''?'color:#303133':''"  placeholder="请输入房屋面积" />
+				       <!-- <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image> -->
+				       <view style="width:80rpx;color:#888"  class="" >㎡</view>
 				  </view>
 				  <view class="house-arrow list" v-if="houseTypeStyle!='生产厂房'">
 					   <view class="field">房屋朝向</view>
-					   <picker   class="value" @change="PickerChange($event,4)" value="index" :range="directionList">
+					   <picker   class="value" @change="PickerChange($event,4)" :value="index" :range="directionList">
 					   		<input class="uni-input" :style="direction != ''? 'color:#303133':''"  :disabled="true"  name="direction" v-model="direction" placeholder="请选择房屋朝向"/>
 					    </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
@@ -102,7 +106,7 @@
 				  <!-- 街面房 -->
 				     <view class="house-arrow list" v-if="houseTypeStyle=='街面房'">
 						   <view class="field">是否临街</view>
-						   <picker   class="value" @change="PickerChange($event,40)" value="index" :range="faceTheStreetList">
+						   <picker   class="value" @change="PickerChange($event,40)" :value="index" :range="faceTheStreetList">
 								<input class="uni-input" :style="faceTheStreet != ''? 'color:#303133':''"  :disabled="true"  name="faceTheStreet" v-model="faceTheStreet" placeholder="请选择是否临街"/>
 							</picker>
 						   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
@@ -133,7 +137,7 @@
 				  </view>
 				  <view class="house-arrow list" v-if="!lcFlag">
 					   <view class="field">楼层</view>
-					   <picker   class="value" @change="PickerChange($event,60)" value="index" :range="lcFloorList">
+					   <picker   class="value" @change="PickerChange($event,60)" :value="index" :range="lcFloorList">
 							<input class="uni-input" :style="floorValue != ''? 'color:#303133':''"  :disabled="true"  name="floor" v-model="floorValue" placeholder="请选择楼层"/>
 						</picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
@@ -174,7 +178,7 @@
 				  </view>
 				  <view class="ownfloor list" v-if="houseTypeStyle=='生产厂房'">
 					   <view class="field">是否独栋</view>
-					   <picker   class="value" @change="PickerChange($event,30)" :alue="index" :range="singleBuildingList">
+					   <picker   class="value" @change="PickerChange($event,30)" :value="index" :range="singleBuildingList">
 							<input class="uni-input" :style="singleBuilding != ''? 'color:#303133':''"  :disabled="true"  name="singleBuilding" v-model="singleBuilding" placeholder="请选择是否独栋"/>
 					   </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
@@ -198,7 +202,7 @@
 				   </view>
 				   <view class="waterElectrics list" v-if="houseTypeStyle=='公寓房'">
 					   <view class="field">水电情况</view>
-					   <picker   class="value" @change="PickerChange($event,20)" value="index" :range="waterElectricList">
+					   <picker   class="value" @change="PickerChange($event,20)" :value="index" :range="waterElectricList">
 							<input class="uni-input" :style="waterElectric != ''? 'color:#303133':''"  :disabled="true"  name="waterElectric" v-model="waterElectric" placeholder="请选择水电情况"/>
 					   </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
@@ -208,35 +212,35 @@
 					
 				  <view class="buildTime list">
 					   <view class="field">建成时间</view>
-						 <picker class="value" mode="date" value="buildTime" :start="startDate" :end="endDate" @change="PickerChange($event,5)">
+						 <picker class="value" mode="date" :value="buildTime" :start="startDate" :end="endDate" @change="PickerChange($event,5)">
 							<input class="uni-input" :style="buildTime != ''? 'color:#303133':''"  :disabled="true"  name="buildTime" v-model="buildTime" placeholder="请选择建筑建成时间"/>
 						 </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
 				  </view>
 				  <view class="buildPurpose list">
 					   <view class="field">房屋用途</view>
-					   <picker   class="value" @change="PickerChange($event,6)" value="index" :range="houseUseWayList">
+					   <picker   class="value" @change="PickerChange($event,6)" :value="index" :range="houseUseWayList">
 					   		<input class="uni-input" :style="houseUseWay != ''? 'color:#303133':''"  :disabled="true"  name="houseUseWay" v-model="houseUseWay" placeholder="请选择房屋用途"/>
 					   </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
 				  </view>
 				  <view class="TransactOwnership list">
 					   <view class="field">交易权属</view>
-					   <picker   class="value" @change="PickerChange($event,7)" value="index" :range="transactOwnShipList">
+					   <picker   class="value" @change="PickerChange($event,7)" :value="index" :range="transactOwnShipList">
 					   		<input class="uni-input" :style="transactOwnShip != ''? 'color:#303133':''"  :disabled="true"  name="transactOwnShip" v-model="transactOwnShip" placeholder="请选择交易所属"/>
 					   </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
 				  </view>
 				  <view class="propertyRightOwnership list">
 					   <view class="field">产权权属</view>
-					   <picker   class="value" @change="PickerChange($event,8)" value="index" :range="propertyRightOwnShipList">
+					   <picker   class="value" @change="PickerChange($event,8)" :value="index" :range="propertyRightOwnShipList">
 					   		<input class="uni-input" :style="propertyRightOwnShip!= ''? 'color:#303133':''"  :disabled="true"  name="propertyRightOwnShip" v-model="propertyRightOwnShip" placeholder="请选择产权所属"/>
 					   </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
 				  </view>
 				  <view class="houseUseTime list">
 					   <view class="field">房屋年限</view>
-					   <picker   class="value" @change="PickerChange($event,9)" value="index" :range="houseUseTimeList">
+					   <picker   class="value" @change="PickerChange($event,9)" :value="index" :range="houseUseTimeList">
 					   		<input class="uni-input" :style="houseUseTime!= ''? 'color:#303133':''"  :disabled="true"  name="houseUseTime" v-model="houseUseTime" placeholder="请选择房屋年限"/>
 					   </picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
@@ -266,7 +270,7 @@
 				   <button class="btn" form-type="submit">提交</button>
 			 </form>
 		 </view>
-		
+		<view class="showtips" v-if="tipflag">{{tipMsg}}</view>
 	</view>
 </template>
 <script>
@@ -279,6 +283,8 @@
 			return {
 				//房屋种类
 				houseTypeStyle:'',
+				tipflag:false,
+				tipMsg:'',
 				//所在城市
 				city:'',
 				// 区域
@@ -452,10 +458,16 @@
 			formSubmit(e) {
 				 let that=this;
 				 let msg=e.detail.value;
-				 console.log('图片')
-				 console.log(that.upUrlList)
+				 if(msg.phone.length!==11){
+					 that.tipflag=true ;
+					 that.tipMsg='手机格式填写错误';
+					 setTimeout(()=>{
+					 		that.tipflag=false
+					 },3000)
+					return false
+				 }
 				let updata={
-					 h_type:that.houseNumber	,
+					 h_type:that.houseNumber,
 					 // 所属城市
 					 h_city:msg.city,
 						// 所属区域
@@ -629,6 +641,7 @@
 										 
 						}
 				 }
+				 
 				 uni.showModal({
 				 	title:'数据存在不可二次更改,确定提交数据？',
 				 	success:function(res){
@@ -641,6 +654,12 @@
 									uni.navigateTo({
 										url:'/pages/index/submitSuccess/submitSuccess'
 									})
+								 }else{
+									 that.tipflag=true ;
+									 that.tipMsg=res.message;
+									 setTimeout(()=>{
+									 		that.tipflag=false
+									 },3000)
 								 }
 			                     console.log('success')
 							 })
@@ -682,7 +701,16 @@
 									// let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let aa = results.data[0];
-									_that.upUrlList.push(aa);
+									
+									if(results.code ==0){
+										_that.upUrlList.push(aa)
+									}else{
+										_that.tipflag=true ;
+										_that.tipMsg=aa.message;
+										setTimeout(()=>{
+												_that.tipflag=false
+										},3000)
+									}
 								},
 								fail: function(datas) {
 									console.log('fail')
@@ -711,6 +739,7 @@
 			},
 			// 种类的选择
 			PickerChange(e,type) {
+				console.log(e,type)
 				if(type ==1){
 					this.houseTypeStyle=this.houseTypeList[e.target.value];
 					this.houseNumber=Number(e.target.value)+1;
@@ -772,7 +801,8 @@
 					let day = date.getDate();
 		
 					if (type === 'start') {
-						year = year - 60;
+						
+						year = year - 10;
 					} else if (type === 'end') {
 						year = year + 2;
 					}
@@ -933,5 +963,22 @@
 		 color:#fff;
 		 font-size: 30rpx;
 		 border-radius: 0;
+	}
+	.showtips{
+	  	  width: 400rpx;
+	  	  height: 100rpx;
+	  	  background:#000;
+	  	  opacity: 0.6;
+	  	  border-radius: 16rpx;
+	  	  position: fixed;
+	  	  left:175rpx;
+	  	  z-index:1000;
+	  	  top:500rpx;
+	  	  color:  #fff;
+	  	  font-size: 28rpx;
+	  	  line-height: 100rpx;
+	  	  text-align: center;
+	  	  
+	  
 	}
 </style>

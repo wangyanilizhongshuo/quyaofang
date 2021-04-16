@@ -94,11 +94,7 @@
 				positiveImage:'',
 				negativeImage:'',
 				// 公司类别的列表
-				categoryNum:''
-				
-			
-				
-				
+				categoryNum:''	
 			}
 		},
 		onReachBottom(){
@@ -112,7 +108,7 @@
 		methods: {
 			backs(){
 				uni.navigateTo({
-					url:'/pages/index/build-material/build-material'
+					url:'/pages/index/design-decoration/design-decoration'
 				})
 			},	
 			formSubmit(e){

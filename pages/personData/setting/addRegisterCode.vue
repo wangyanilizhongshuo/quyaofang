@@ -11,7 +11,7 @@
 		<view class="contents">
 			<view class="list">
 				<view class="left">手机号</view>
-				<input  class="center" v-model="phone" />
+				<input  class="center"  disabled v-model="phone" />
 				
 			</view> 
 			<view class="list">
@@ -90,7 +90,7 @@
 						that.tipsFlag=true;
 						that.tipsMsg=res.message ;
 						setTimeout(()=>{
-								 that.tipsFlag=true;
+								 that.tipsFlag=false;
 						},2500)
 					}
 				})
