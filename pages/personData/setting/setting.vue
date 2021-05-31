@@ -46,9 +46,9 @@
 			
 			quits(){
 				if(window.android && window.android.quit){
-									 window.android.quit();
+						 window.android.quit();
 				}else{
-									 window.webkit.messageHandlers.quit.postMessage(123);      
+					window.webkit.messageHandlers.quit.postMessage('return');
 				}
 			  },
 			jumps(type){
@@ -122,12 +122,13 @@
 		.sale-title{
 			 @extend  %title;
 			 .left{
-				 width:60rpx;
+				 width:100rpx;
 				 height: 75rpx;
 				 line-height: 75rpx; 
 				 position: absolute;
-				 left:30rpx;
+				 padding-left:30rpx;
 				 top:7.5rpx;
+         background-color: red;
 		     }
 			.img{
 				display: block;

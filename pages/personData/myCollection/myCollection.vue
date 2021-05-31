@@ -33,7 +33,8 @@
 		data() {
 			return {
 				listData: [
-				     ]
+				     ],
+				
 			}
 		},
 		components: {
@@ -51,11 +52,12 @@
 				if(window.android && window.android.quit){
 					 window.android.quit();
 				}else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');   
 				}
 			  },
 			// 跳转到详情页
 			jumpDetail(index){
+				// 
 				uni.navigateTo({
 					url:'/pages/personData/houseDetail/houseDetail'
 				})
@@ -87,6 +89,11 @@
 					console.log(id,types,status,audit,resourse)
 				// url:'/pages/personData/houseDetail/houseDetail?type='+'renting'+'&flag='+flag+'&id='+id+'&getDataTypes='+type
 				// getDataTypes 所属类型 毛坯房 公寓
+				if(resourse==1){
+					resourse=2;
+				}else{
+					resourse=1;
+				}
 				uni.navigateTo({
 					url:'/pages/personData/houseDetail/houseDetail?type='+'myCollect'+'&id='+id+'&getDataTypes='+types+'&flag='+flag+'&rentSaleType='+resourse
 				})
@@ -139,11 +146,11 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{

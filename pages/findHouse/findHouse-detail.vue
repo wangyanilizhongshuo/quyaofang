@@ -139,14 +139,14 @@
 			padding-left:30rpx;
 			align-items: center;
 			.left{
-				width: 50rpx;
-				height:50rpx;
+				width: 60rpx;
+				height:60rpx;
 				margin-right:240rpx;
 				.img{
 					display: block;
 					width:30rpx;
 					height: 30rpx;
-					margin:10rpx 10rpx;;
+					margin:15rpx ;
 				}
 			}
 			.field{

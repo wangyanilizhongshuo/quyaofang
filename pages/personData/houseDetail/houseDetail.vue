@@ -97,8 +97,8 @@
 			</view>
 			<view class="footer" :style="occurFlag?'justify-content:space-between':''">
 				<view class="left">
-					<image  class="img" v-if="collectionFlag" @tap.stop="getCollet" src="../../../static/image/houseDetail-collectLight.png"></image>
-					<image class="img" v-if="!collectionFlag" @tap.stop="getCollet" src="../../../static/image/houseDetail-collect.png"></image>
+					<image  class="img" v-if="dataList.is_collect==1" @tap.stop="getCollet" src="../../../static/image/houseDetail-collectLight.png"></image>
+					<image class="img" v-if="dataList.is_collect==0" @tap.stop="getCollet" src="../../../static/image/houseDetail-collect.png"></image>
 					<view class="fields">收藏</view>
 				</view>
 				<view  v-if="!occurFlag" class="center footer-style" @tap.stop="stopMove">
@@ -178,6 +178,7 @@
 				},
 				dataList:'',
 				Hproperty:1,//房产是出租还是出售1出售 2出租
+				// saleRentType:false
 			}
 		},
 		onShareAppMessage: function (res) {
@@ -290,6 +291,20 @@
 				this.occurFlag=true;
 				
 			}
+			// 我的收藏myCollect
+			// else if(this.type =='myBrowding' && this.flag ==0){
+			// 	this.occurFlag=false;
+				
+			// }
+			// else if(this.type =='myBrowding' && this.flag ==1){
+			// 	this.flagText='已出售';//房源
+			// 	this.occurFlag=true;
+			// }else if(this.type =='myBrowding' && this.flag ==11){
+			// 	this.flagText='编辑';
+			// 	this.editFlag=true;
+			// 	this.occurFlag=true;
+				
+			// }
 			this.getData();
 		},
 		methods: {
@@ -321,7 +336,7 @@
 				 that.$h5.post('Message/clickmsg',{
 					 content:aa,
 					 h_id:that.id,
-					 release:that.dataList.h_phone,
+					 release:that.dataList.h_release ||that.dataList.r_release,
 					 h_type:that.getDataTypes,
 					 h_resource:typess ,//是否出售或者出卖
 					 
@@ -381,9 +396,11 @@
 				
 				 if(that.type=='houseResource' ||that.rentSaleType==1 ){
 					 url='sell/particulars?'
+					 that.Hproperty=1;
 					 console.log(1111)
 				 }else if(that.type=='renting' ||that.type=='myHouse'  ||that.rentSaleType==2){
-					 url='rent/rentdetails'
+					 url='rent/rentdetails';
+					 that.Hproperty=2;
 					 console.log(222)
 				 }
 				 that.$h5.get(url,{
@@ -611,7 +628,7 @@
 				 uni.makePhoneCall({
 				     phoneNumber: number, //仅为示例
 					 success(res){
-						
+						window.webkit.messageHandlers.quit.postMessage(number);		
 					 },
 					 fail(res){
 						console.log(res) 
@@ -697,8 +714,8 @@
 	box-sizing: border-box;
 }
 .back{
-	width: 50rpx;
-	height: 50rpx;
+	width: 60rpx;
+	height: 60rpx;
 	display: block;
 	position:fixed;
 	left:30rpx;

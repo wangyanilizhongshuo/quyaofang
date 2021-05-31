@@ -2,8 +2,8 @@
 	<view class="h5-newInformation">
 		<view class="zw"></view>
 		<view class="top-box">
-			<view class="title ">
-				<view class="left"  @tap.stop="quits" >
+			<view class="title " >
+				<view class="left"  @tap.stop="quits">
 					<image class="img" src="/static/image/white-back.png"></image>
 				</view>
 				<view class="field">{{titleName}}</view>
@@ -18,15 +18,15 @@
 			 <view class="selectHouse-boxs biglist-box">
 				 <view class="title-filed" >精选房源</view>
 				 <view class="list-box">
-					 <view class="list"  v-for="(item,index) in carePickList" :key="index"   @tap="jumpDetail(item.id)" >
-						 <image class="left" :src="item.h_img " ></image>
+					 <view class="list"  v-for="(item,index) in carePickList" :key="index"   @tap="jumpDetail1(item.h_type,item.h_class,item.h_id)" >
+						 <image class="left" :src="item.h_img" ></image>
 						 <view class="right">
 							 <view class="first-line">
 								 <text class="signal-box">优质好房</text>
                                      {{item.h_area}}{{item.h_charge}}   
 							 </view>
 							 <view class="second-line margin2">{{item.h_architecture}}㎡/{{item.h_orientation}}/{{item.h_housetype}}/{{item.h_fitment}}</view>
-							 <view class="third-line"><text class="price"> {{item.h_money}}</text>元/月</view>
+							 <view class="third-line"><text class="price"> {{item.h_money}}</text><text v-if="types==2">万/套</text> <text v-if="types==1">元/月</text></view>
 						 </view>
 					 </view>
 				 </view>
@@ -38,13 +38,13 @@
 					  <view class=" list listss"  v-for="(item,index) in ordinaryList" :key="index"  @tap="jumpDetail(item.id)">
 						  <image class="left-img" :src="item.r_cover ||item.h_cover"></image>
 						  <view class="right rights">
-							  <view class="first-line">{{item.r_area}}{{item.r_houses}}</view>
-							  <view class="fourth-line">{{item.r_mj}}㎡</view>
-							  <view class="fourth-line">{{item.r_specific}}</view>
+							  <view class="first-line">{{item.r_area||item.h_area }}{{item.r_houses ||item.h_houses}}</view>
+							  <view class="fourth-line">{{item.r_mj ||item.h_qrea}}㎡</view>
+							  <view class="fourth-line">{{item.r_specific||item.h_facility}}</view>
 							  <view class="fifth-line">
 								  <text class="detailDescriteList" v-for="(item,index) in descriteList" :key="index">{{item}}</text>
 							  </view>
-							  <view class="sixth-line"><text class="price">{{item.r_money}}</text>万/套</view>
+							  <view class="sixth-line"><text class="price">{{item.r_money||item.h_money}}</text> <text v-if="types==2">万/套</text> <text v-if="types==1">元/月</text></view>
 						  </view>
 					  </view >
 				  </view>
@@ -64,7 +64,8 @@
 				titleName:'办公用房',
 				// keyWords:'',
 				carePickList:[],
-				ordinaryList:[]
+				ordinaryList:[],
+				user_token:''
 			}
 		},
 		onReachBottom(){
@@ -90,7 +91,7 @@
 			 uni.setNavigationBarTitle({
 			 	 title:this.titleName
 			 })
-			
+			this.getList();
 			 this.getList1()
 			
 		},
@@ -101,7 +102,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');      
 				 }
 			     
 			  },
@@ -116,11 +117,25 @@
 				
 				if(this.types==1){
 					uni.navigateTo({
-						 url:'/pages/index/houseDetail/houseDetail1?types='+this.classes+'&ids='+index
+						 url:'/pages/index/houseDetail/houseDetail1?types='+this.classes+'&ids='+index+'&user_token='+this.user_token
 					})
 				}else if(this.types==2){
 					uni.navigateTo({
-					    url:'/pages/index/houseDetail/houseDetail?types='+this.classes+'&ids='+index
+					    url:'/pages/index/houseDetail/houseDetail?types='+this.classes+'&ids='+index+'&user_token='+this.user_token
+				   })
+				}
+				
+				
+			},
+			jumpDetail1(h_type,h_class,id){
+				
+				if(h_type==1){
+					uni.navigateTo({
+						 url:'/pages/index/houseDetail/houseDetail1?types='+h_class+'&ids='+id+'&user_token='+this.user_token
+					})
+				}else if(h_type==2){
+					uni.navigateTo({
+					    url:'/pages/index/houseDetail/houseDetail?types='+h_class+'&ids='+id+'&user_token='+this.user_token
 				   })
 				}
 				
@@ -199,17 +214,17 @@
 			width:750rpx;
 			height: 90rpx;
 			display: flex;
-			padding-left:30rpx;
 			align-items: center;
 			.left{
-				width: 50rpx;
-				height:50rpx;
+				width: 100rpx;
+				height:60rpx;
 				margin-right:240rpx;
+        padding-left:30rpx;
 				.img{
 					display: block;
 					width:30rpx;
 					height: 30rpx;
-					margin:10rpx 10rpx;;
+					margin:15rpx ;
 				}
 			}
 			.field{
@@ -285,7 +300,7 @@
 						 flex-direction: column;
 						justify-content: space-between;
 						 .first-line{
-							@include ellipsis(2);
+							@include ellipsis(1);
 							color: #141414;
 							font-size:30rpx ;
 							font-weight: bold;

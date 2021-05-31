@@ -69,7 +69,7 @@
 					 </view> -->
 				 </view>
 				 <view class="btn-choice">
-					 <view class="resetBtn"> 
+					 <view class="resetBtn" @tap.stop="getReset"> 
 					   <text class="reset">重置</text>
 					   <image class="reset-img" src="../../../static/image/reset.png" ></image>
 					 </view>
@@ -136,7 +136,7 @@
 			<view class="box-list" v-for="(item,index) in  houseList" :key="index" @tap="jumpDetail(item.id)">
 				<image class="img  left" :src="item.r_cover"></image>
 				<view class="right">
-					<view class="first-line">出售·{{item.r_housetype}}</view>
+					<view class="first-line">出租·{{item.r_housetype}}</view>
 					<view class="second-line">{{item.r_mj}}㎡/{{item.r_orientation}}/毛坯</view>
 					<view class="third-line">{{item.r_area}}</view>
 					<view class="fourth-line">
@@ -144,7 +144,7 @@
 					</view>
 					<view class="fifth-line">
 						<text class="redWord">{{item.r_money}}</text>
-						<text class="blackWord">万/套</text>
+						<text class="blackWord">元/套</text>
 					</view>
 				</view>
 			</view>
@@ -185,7 +185,7 @@
 				nearByLong:['1km','2km','3km','4km'],
 				// 地址选择
 				// 距离选择
-				priceRange:['≤100万元','100-150万元','150-200万元','≥200万元'],
+				priceRange:['≤1500元','1500-3000元','3000-5000元','≥5000元'],
 				priceActiveFlag:-1,
 				// 距离选择
 				//  户型 房子类型的选择v
@@ -217,7 +217,9 @@
 				saleType:'',//发送给后端的数据
 				searchKey:'',//搜索关键字
 				orderType:'asc',
-				// user_token:''
+				user_token:'',
+				staticList:[],
+				firstSend:true
 	         }
 		  
 		},
@@ -255,19 +257,19 @@
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
-				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];
 				that.saleType=2;
 					console.log(2222)
 			}else if (that.rentTypes==2){
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
-				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];
 				that.saleType=3;
 			}
 			else if (that.rentTypes==3){
-				that.priceRange=['≤500万元','500-1500万元','1500-3000万元','≥3000万元'];
-				that.floorChoiceList=['单层','多层'];
+				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];
 			    that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.houseHightList=['≤6m','6-10m','≥10m'];
 				that.saleType=4;
@@ -275,15 +277,15 @@
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
-				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];
 				that.saleType=6;
 			}else if (that.rentTypes==5){
-				that.priceRange=['≤300万元','300-500万元','500-1000万元','≥1000万元'];
+				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.saleType=5;
 			}else if (that.rentTypes==6){
-				that.priceRange=['≤100万元','100-500万元','500-1000万元','1000-3000万元','≥3000万元'];
-				that.houseAreaList=['≤100㎡','100-300㎡','300-500㎡','≥500㎡'];
+				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
+				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.saleType=1;
 			};
 			console.log(12345678910)
@@ -299,7 +301,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');     
 				 }
 			  },
 			pointSearch(){
@@ -308,6 +310,9 @@
 				this.allPickFlag=false;
 				this.searchFlag=false;
 				
+			},
+			getReset(){
+				this.houseList=this.staticList;
 			},
 			getInputSerach(e){
 				this.getLists()
@@ -329,7 +334,7 @@
 				
 				this.addFirstFlag=index;
 				if(index==-1){
-					this.getAddressValue=this.address
+					this.getAddressValue=this.address;
 				}else{
 					this.getAddressValue=this.addressList[index];
 				}
@@ -387,7 +392,7 @@
 			// 跳转到详情页
 			jumpDetail(index){
 				uni.navigateTo({
-					url:'/pages/index/houseDetail/houseDetail1?types='+this.salesTypes+'&ids='+index
+					url:'/pages/index/houseDetail/houseDetail1?types='+this.saleType+'&ids='+index+'&user_token='+this.user_token
 				})
 			},
 			// 获取数据列表
@@ -395,23 +400,38 @@
 				let  that=this;
 				console.log(that.saleType)
 				that.houseList=[];
-				
-				that.$h5.post('rent/rentlist',{
-					type:that.saleType,
-					r_area:that.getAddressValue,//区域
-					r_money:that.getMoneyValue,//价格选取
-                    r_mj:that.choiceAreasIndex+1,
-					r_orientation:that.arientionList[that.arientionIndex],
-					r_level:that.floorChoiceList[that.floorChoiceIndex],
-					keywords:that.searchKey,
-					order:that.orderType
-				},(res)=>{
+				let items={}
+				if(that.firstSend){
+					items={
+						type:that.saleType,
+						r_area:that.getAddressValue,//区域
+						r_money:'',//价格选取
+					    r_mj:'',
+						r_orientation:'',
+						r_level:'',
+						keywords:'',
+						order:''
+					}
+				}else{
+					items={
+						type:that.saleType,
+						r_area:that.getAddressValue,//区域
+						r_money:that.getMoneyValue,//价格选取
+					    r_mj:that.choiceAreasIndex+1,
+						r_orientation:that.arientionList[that.arientionIndex],
+						r_level:that.floorChoiceList[that.floorChoiceIndex],
+						keywords:that.searchKey,
+						order:that.orderType
+					}
+				}
+				that.$h5.post('rent/rentlist',items,(res)=>{
 					 if(res.code ==0){
-						 this.houseList=res.data;
+						 that.houseList=res.data;
 						for(let i of this.houseList){
 							i.r_facility=i.r_facility.split('，')
 							i.r_cover=app.globalData.img+i.r_cover
 						}
+						 that.staticList=JSON.parse(JSON.stringify(this.houseList));
 						 
 					 }     
 				})

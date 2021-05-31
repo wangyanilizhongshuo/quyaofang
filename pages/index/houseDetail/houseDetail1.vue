@@ -15,7 +15,7 @@
 					 <view class="left">
 						 <view class="left-top">
 							 <text class="money">{{houseValue.r_money}}</text>
-							 <text class="company">万/套</text>
+							 <text class="company">元/月</text>
 							 <text  class="area">{{(houseValue.r_money/houseValue.r_mj).toFixed(2)*10000}}元/㎡</text>
 						 </view>
 						 <view class="left-bottom">出租·{{houseValue.r_city}}{{houseValue.r_area}}{{houseValue.r_housetype}}</view>
@@ -101,19 +101,10 @@
 			 </view>
 			 <view class="btn" @tap.stop="sendMsg">提交</view>
 		</view>
-	  <view class="shareMask" v-if="shareDiaFlag"></view>
-	 <view class="shareDialog" v-if="shareDiaFlag">
-			<view class="top">
-	               <view class="left styless">
-					   <image  class="logo-img" src="../../../static/image/weixin-logo.png"></image>
-					   <view class="wx-word word">分享给好友</view>
-				   </view>
-				   <view class="right styless">
-					   <image  class="logo-img" src="../../../static/image/pengyouquan.png"></image>
-					   <view class="pyq-word word">分享到朋友圈</view>
-				   </view>
-			</view>
-			<view class="down" @tap="shareDiaFlag=false">取消</view>
+	
+		<view class="unLoginBoxMask" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'></view>
+		<view class="unLoginBox" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'>
+				 <image class="imgs" src="../../../static/image/onLoginBg.png"></image>
 		</view>
 		<view class="showtips" v-if="tipflag">{{tipMsg}}</view>
 </view>	</view>
@@ -148,7 +139,8 @@
 			   ids:'',
 			   
 			   houseValue:'',
-			  shareDiaFlag:false
+			  shareDiaFlag:false,
+			  user_token:''
 					
 			}
 		},
@@ -193,19 +185,22 @@
 				 aa=aa.join(',');
 				 that.$h5.post('Message/clickmsg',{
 					 content:aa,
-					 release:that.houseValue.r_phone,
+					 release:that.houseValue.r_release,
 					 h_resource:1,
 					 h_id:that.ids,
 					 h_type:that.types
 				 },(res)=>{
 					 if(res.code ==0){
-						 that.maskFlag=false
-					 }else {
+						 that.maskFlag=false;
+					 }else if(res.code ==9) {
+						that.maskFlag=false;
+						that.shareDiaFlag=true;
+					 }else{
 						 that.tipflag=true ;
 						 that.tipMsg=res.message;
 						 setTimeout(()=>{
 						 		that.tipflag=false;
-								that.maskFlag=false;
+						 		that.maskFlag=false ;
 						 },3000)
 					 }
 				 })
@@ -213,6 +208,10 @@
 			 },
 			 //是否收藏
 			 getCollet(){
+				 if(!this.user_token){
+					 this.shareDiaFlag=true;
+					 return false
+				 }
 					 let that=this;
 					 that.collectionFlag=(!that.collectionFlag);
 					 that.$h5.post('collect/clickcollect',{
@@ -221,7 +220,14 @@
 						 class:that.types
 					 },(res)=>{
 						 if(res.code ==0){
-							 console.log(res)
+							 that.tipflag=true ;
+							 that.tipMsg='收藏成功';
+							 setTimeout(()=>{
+							 		that.tipflag=false;
+							 		that.maskFlag=false ;
+							 },3000)
+							 
+						 }else{
 							 
 						 }
 					 })
@@ -244,22 +250,31 @@
 			 },
 			 // 打电话
 			 call(){
+				 if(!this.user_token){
+					 this.shareDiaFlag=true;
+					 return false
+				 }
+				 let that=this;
 				 uni.makePhoneCall({
-				     phoneNumber: this.houseValue.h_phone, //仅为示例
+				     phoneNumber: that.houseValue.r_phone, //仅为示例
 					 success(res){
-						 // console.log(res);
-						 // console.log('sucecess')
+						window.webkit.messageHandlers.quit.postMessage(that.houseValue.r_phone);		
 					 },
 					 fail(res){
-						console.log(res) 
+						
 					 }
 				 });
 			 },
 			 // 留言
 			 stopMove(){
-				    this.maskFlag=true;
-					this.arrs.top=0+'rpx';
-					this.arrs.left=0+'rpx';
+				  if(this.user_token){
+					  this.maskFlag=true;
+					  this.arrs.top=0+'rpx';
+					  this.arrs.left=0+'rpx';
+				  }else{
+					  this.shareDiaFlag=true;
+				  }
+				    
 			 },
 			 random(){
 				 let labelLists=this.labelList;
@@ -358,13 +373,19 @@
 	padding: 0 40rpx 0 30rpx;
 	box-sizing: border-box;
 }
+.unLoginBoxMask{
+	 @extend  %unLoginboxMask;
+}
+.unLoginBox{
+	@extend  %unLoginbox;
+}
 .h5-houseDetail{
 	padding-top: var(--status-bar-height);
 	box-sizing: border-box;
 }
 .back{
-	width: 50rpx;
-	height: 50rpx;
+	width: 60rpx;
+	height: 60rpx;
 	display: block;
 	position:fixed;
 	left:30rpx;

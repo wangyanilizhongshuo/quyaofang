@@ -138,8 +138,8 @@
 	box-sizing: border-box;
 }
 .back{
-	width: 50rpx;
-	height: 50rpx;
+	width: 60rpx;
+	height: 60rpx;
 	display: block;
 	position:fixed;
 	left:30rpx;

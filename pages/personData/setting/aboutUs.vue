@@ -59,11 +59,11 @@
 	.sale-title{
 		 @extend  %title;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 	     }
 		.img{

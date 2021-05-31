@@ -38,6 +38,30 @@
 		-webkit-line-clamp: $number;
 		-webkit-box-orient: vertical;
 	}
+	%unLoginboxMask{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 10;
+			background-color: #000;
+			opacity: 0.5;
+				
+	}
+	%unLoginbox{
+		width: 750rpx;
+		position: absolute;;
+		left:155rpx;
+		top:360rpx;
+		z-index: 100;;
+		.imgs{
+			display: block;
+			width: 440rpx;
+			height: 570rpx;;
+		}
+		
+			}
 	
 
 	

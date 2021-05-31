@@ -88,13 +88,11 @@ function createApiToken(){
 	    api_token=bin2Hex(encode_str);
 	  return api_token
    }
-var user_token=wx.getStorageSync('token');
-// var user_token ='c4aaaaaaaaee825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05'
-// wx.setStorageSync('token','fb7952b57f0174f2342a1aba49371600f3451f71998a86bfcb88ca566440ff9a7daf70944f95cb0c46ec73d3fe2f050f75c1c082af5da54766834b0e979577d43527f1e1dbde11759d9d49f40ec442d2d35d354898b8ad4b9a3115a80769bf05');
+// var userTokens=wx.getStorageSync('token');
+var userTokens ='c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861c0b5599a63ec59a8cc667cc35e0b5b30cc35df2fc885f3a37551d9722dae9557c6c1c617638c6424a1d4622d0baf0279d35d354898b8ad4b9a3115a80769bf05'
 module.exports = {
 	setData,
 	encrypt,
-	user_token,
+	userTokens,
 	createApiToken
-
 }

@@ -11,7 +11,7 @@
 		<view class="contents" >
 			 <view class="listBox" v-for="(item,index)  in lists" :key="index" >
 				 <view  class="timeLine">{{item.time}}</view>
-				 <view  class="listBox-content" v-for="(itemss ,indexss) in item.data" :key="indexss" @tap.stop="jumpDetail(index,indexss)">
+				 <view  class="listBox-content" v-for="(itemss ,indexss) in item.data" :key="indexss" @tap.stop="jumps(itemss.h_id,itemss.h_class,itemss.h_status,itemss.h_audit,itemss.h_type)">
 					 <image class="imgs" :src="'https://yaofangme.hzbixin.cn/'+itemss.h_img"></image>
 					 <view class="right">
 						 <view class="firstLine"><text  class="titles">{{itemss.h_housetype}}</text>
@@ -72,11 +72,28 @@
 				})
 			},
 			// 跳转到详情页
-			jumpDetail(index,indexss){
+			jumps(id,types,status,audit,resourse){
+				console.log(id,types,status,audit,resourse)
+					let flag='';
+					if(audit ==1 && status ==1){
+						flag=1;
+					}else if(audit ==0 && status ==0 ){
+						flag=11;
+					}else if (audit ==1 && status ==0){
+						flag=0;
+					}
+					
+				// url:'/pages/personData/houseDetail/houseDetail?type='+'renting'+'&flag='+flag+'&id='+id+'&getDataTypes='+type
+				// getDataTypes 所属类型 毛坯房 公寓
+				if(resourse==1){
+					resourse=2;
+				}else{
+					resourse=1;
+				}
 				uni.navigateTo({
-					url:'/pages/personData/houseDetail/houseDetail'
+					url:'/pages/personData/houseDetail/houseDetail?type='+'myCollect'+'&id='+id+'&getDataTypes='+types+'&flag='+flag+'&rentSaleType='+resourse
 				})
-			}
+			},
 		}
 	}
 </script>
@@ -107,18 +124,18 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		.left{
-					 width:60rpx;
-					 height: 75rpx;
-					 line-height: 75rpx; 
-					 position: absolute;
-					 left:30rpx;
-					 top:7.5rpx;
+       width: 100rpx;
+       height: 75rpx;
+       line-height: 75rpx; 
+       position: absolute;
+       padding-left:30rpx;
+       top:7.5rpx;
 		}
 		.img{
 			display: block;
-			width:19rpx;
+			width:30rpx;
 			height: 30rpx;
-					margin-top:23rpx;
+			margin-top:23rpx;
 		}
 		 .field{
 			 @extend  %title-field;

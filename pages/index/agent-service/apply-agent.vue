@@ -51,6 +51,10 @@
 			<button class="btn" form-type="submit">提交申请</button>
 			</form>
 		</view>
+		<view class="unLoginBoxMask" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'></view>
+		<view class="unLoginBox" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'>
+				 <image class="imgs" src="../../../static/image/onLoginBg.png"></image>
+		</view>
 		<view class="hbyOccurFlag" v-if="tipsFlag">{{tipsMsg}}</view>
 	</view>
 </template>
@@ -59,6 +63,7 @@
 	export default {
 		data() {
 			return {
+				shareDiaFlag:false,
 				tipsFlag:false,
 				tipsMsg:'',
 				// 姓名
@@ -89,7 +94,10 @@
 			
 		},
 		onLoad(options){
-		     this.setData(options);			
+			if(!uni.getStorageSync('token')){
+				 this.shareDiaFlag=true;
+			}
+		     this.setData(options);
 		},
 		methods: {
 			backs(){
@@ -121,7 +129,7 @@
 									 that.tipsFlag=true;
 									 that.tipsMsg=res.message;
 									 setTimeout(()=>{
-									 		 that.tipsFlag=true;
+									 		 that.tipsFlag=false;
 									 },2500)
 								 }
 							 })
@@ -135,11 +143,12 @@
 			// 营业执照
 			// 照片的选择
 			getImage(type){
+				console.log(this.user_token)
 				let _that = this;
 				uni.chooseImage({
 					count: 1, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						if(type ==1){
@@ -157,14 +166,13 @@
 							// header:{"Content-Type": "multipart/form-data"},
 							formData: {
 								'type':'agent',
-								 'user_token':_that.user_token
+								 'user_token':_that.userTokens
 							},
 							success: function(datas) {
 								let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 								let aa = results.data[0];
 								if(type ==1){
 							      _that.msgLists.positiveImage=aa;
-								  console.log( _that.msgLists.positiveImage)
 							    }else  if(type ==2 ){
 							     _that.msgLists.negativeImage=aa;
 								 console.log( _that.msgLists.negativeImage)
@@ -221,6 +229,13 @@
 
 <style scoped lang="scss">
 	@import "../../../static/scss/common.scss";
+	
+	.unLoginBoxMask{
+		 @extend  %unLoginboxMask;
+	}
+	.unLoginBox{
+		@extend  %unLoginbox;
+	}
 	%img-del{
 		position: absolute;
 		right:-20rpx;
@@ -253,22 +268,21 @@
 		z-index: 20;
 	}
 	.news-title{
-		
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
-			 height: 75rpx;
-			 line-height: 75rpx; 
+			 width:100rpx;
+			 height: 60rpx;
+			 line-height: 60rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{
 		 	display: block;
-		 	width:19rpx;
+		 	width:30rpx;
 		 	height: 30rpx;
-			margin-top:23rpx;
+			margin-top:15rpx;
 		 }
 		 .field{
 			 @extend  %title-field;

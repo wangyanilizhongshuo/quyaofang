@@ -69,7 +69,7 @@
 					 </view> -->
 				 </view>
 				 <view class="btn-choice">
-					 <view class="resetBtn"> 
+					 <view class="resetBtn" @tap.stop='getReset'> 
 					   <text class="reset">重置</text>
 					   <image class="reset-img" src="../../../static/image/reset.png" ></image>
 					 </view>
@@ -133,7 +133,7 @@
 		<!-- 主体列表内容 -->
 		<view class="content-box" style="margin-top: 180rpx;" :style="positionFlag ||priceFlag  || allPickFlag || searchFlag?
 		                   'position: fixed;left:0rpx':''" v-if="!searchFlag">
-			<view class="box-list" v-for="(item,index) in  houseList" :key="index" @tap="jumpDetail(item.id)">
+			<view class="box-list" v-for="(item,index) in  houseList" :key="index" @tap="jumpDetail(item.h_type,item.id)">
 				<image class="img  left"  :src="item.h_cover"></image>
 				<view class="right">
 					<view class="first-line">出售·{{item.h_housetype}}</view>
@@ -216,7 +216,10 @@
 				salesTypes:1,//毛坯房，公寓房 的类别之分,
 				saleType:'',//发送给后端的数据
 				searchKey:'',//搜索关键字
-				orderType:'asc'
+				orderType:'asc',
+				user_token:'',
+				staticList:[],
+				firstSend:true
 	         }
 		  
 		},
@@ -230,7 +233,6 @@
 				if (platform.toLowerCase() == "android" ){
 					height +=4 //android 28px
 				}
-				console.log(height+38)
 				// 胶囊高度 32px 下边框6px height 状态栏高度
 				return height+ 38 + "px"
 			},
@@ -240,8 +242,7 @@
 				if (platform.toLowerCase() == "android" ){
 					height +=4;
 				}
-				console.log('marginTop')
-				console.log(height)
+				
 				return height + "rpx"				
 			}
 		},
@@ -255,19 +256,18 @@
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
-				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];;
 				that.saleType=2;
-					console.log(2222)
 			}else if (that.salesTypes==2){
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
-				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];
 				that.saleType=3;
 			}
-			else if (that.salesTypes==3){
-				that.priceRange=['≤500万元','500-1500万元','1500-3000万元','≥3000万元'];
-				that.floorChoiceList=['单层','多层'];
+			else  if (that.salesTypes==3){
+				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];
 			    that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.houseHightList=['≤6m','6-10m','≥10m'];
 				that.saleType=4;
@@ -275,23 +275,21 @@
 				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 				that.arientionList=['南北','南','西','北','东'];
-				that.floorChoiceList=['1~~3层','4~~6层','7~~9层','9层以上'];
+				that.floorChoiceList=['1—3层','4—6层','7—9层','9层以上'];
 				that.saleType=6;
 			}else if (that.salesTypes==5){
-				that.priceRange=['≤300万元','300-500万元','500-1000万元','≥1000万元'];
+				that.priceRange=['≤100万元','100-150万元','150-200万元','200-300万元','≥300万元'];
 				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.saleType=5;
 			}else if (that.salesTypes==6){
-				that.priceRange=['≤100万元','100-500万元','500-1000万元','1000-3000万元','≥3000万元'];
-				that.houseAreaList=['≤100㎡','100-300㎡','300-500㎡','≥500㎡'];
+				that.priceRange=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
+				that.houseAreaList=['≤50㎡','50-70㎡','70-90㎡','90-120㎡','120-140㎡','140-160㎡','160-200㎡','≥200㎡'];
 			    that.saleType=1;
 			};
-			console.log(12345678910)
 			that.getLists();
 			that.getquList();//查找区县
 		},
 		onReachBottom(){
-			console.log(43345)
 		},
 		methods: {
 			quits(){
@@ -299,7 +297,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');    
 				 }
 			  },
 			pointSearch(){
@@ -309,13 +307,17 @@
 				this.searchFlag=false;
 				
 			},
+			getReset(){
+				this.houseList=this.staticList;
+			},
 			//根据关键字搜索
 			getInputSerach(e){
+				this.firstSend=false;
 				this.getLists()
 			},
 			// 搜索地址的数据
 			cityClick(item) {
-				console.log(1111)
+				
 				this.address=JSON.parse(JSON.stringify(item.title));
 				this.searchFlag=false;
 				this.getquList();//查找区县
@@ -326,17 +328,14 @@
 			},
 			// 点亮地址
 			addFirstBtn(index){
-				console.log('wangyani')
-				
+
 				this.addFirstFlag=index;
 				if(index==-1){
 					this.getAddressValue=this.address
 				}else{
 					this.getAddressValue=this.addressList[index];
 				}
-				
-				console.log(this.addFirstFlag)
-				console.log(this.getAddressValue)
+				this.firstSend=false;
 				this.getLists()
 			},
 			
@@ -344,6 +343,7 @@
 			priceGet(index){
 				this.priceActiveFlag=index;
 				this.getMoneyValue=index+1;
+				this.firstSend=false;
 				this.getLists();
 			},
 			// 最上方搜索的方式: 距离价格范围
@@ -359,7 +359,8 @@
 				}else if (type ==4){
 					this.allPickFlag=true;
 				}else if (type ==5){
-					this.orderType=(this.orderType=='asc')?'desc':'asc'
+					this.orderType=(this.orderType=='asc')?'desc':'asc';
+					this.firstSend=false;
 					this.getLists();
 				}
 			},
@@ -367,18 +368,20 @@
 			// 面积
 			choiceAreas(index){
 				this.choiceAreasIndex=index;
-				console.log(this.choiceAreasIndex)
+				this.firstSend=false;
 				this.getLists()
 			},
 			// 房屋朝向
 			orientions(index){
 				this.arientionIndex=index;
+				this.firstSend=false;
 				this.getLists()
 			},	
 			//所有的筛选
 			// 楼层
 			floorPicker(index){
 				this.floorChoiceIndex=index;
+				this.firstSend=false;
 				this.getLists()
 			},
 			// 层高
@@ -386,32 +389,52 @@
 				this.hHeightIndex=index;
 			},
 			// 跳转到详情页
-			jumpDetail(index){
+			jumpDetail(type,index){
 				uni.navigateTo({
-					url:'/pages/index/houseDetail/houseDetail?types='+this.salesTypes+'&ids='+index
+					url:'/pages/index/houseDetail/houseDetail?types='+type+'&ids='+index+'&user_token='+this.user_token
 				})
 			},
 			// 获取数据列表
 			getLists(){
 				let  that=this;
-				console.log(that.saleType)
 				that.houseList=[];
-				that.$h5.post('sell/selllist',{
+				let items={};
+				if(that.firstSend){
+					 items={
+						 type:that.saleType,
+						 h_area:that.getAddressValue ,//区域
+						 h_money:'',//价格选取
+						 h_qrea:'',
+						 h_orientation:'',
+						 h_louceng:'',
+						 keywords:'',
+						 order:'',
+						
+				  }
+				}else{
+					items={
 					type:that.saleType,
-					h_area:that.getAddressValue,//区域
+					h_area:that.getAddressValue ,//区域
 					h_money:that.getMoneyValue,//价格选取
-                    h_qrea:that.choiceAreasIndex+1,
+					h_qrea:that.choiceAreasIndex+1,
 					h_orientation:that.arientionList[that.arientionIndex],
 					h_louceng:that.floorChoiceList[that.floorChoiceIndex],
 					keywords:that.searchKey,
-					order:that.orderType
-				},(res)=>{
+					order:that.orderType,
+					}
+				}
+				
+			
+				that.$h5.post('sell/selllist',items,(res)=>{
 					 if(res.code ==0){
 						 this.houseList=res.data;
+						 console.log(1234)
+						 console.log(this.houseList,'houseList')
 						for(let i of this.houseList){
 							i.h_facility=i.h_facility.split('，');
 							i.h_cover=app.globalData.img+i.h_cover
 						}
+						that.staticList=JSON.parse(JSON.stringify(this.houseList));
 						 
 					 }     
 				})

@@ -47,6 +47,7 @@
 			</form>
 		</view>
 		<view class="showtips" v-if="tipflag">{{tipMsg}}</view>
+		
 	</view>
 </template>
 
@@ -54,6 +55,7 @@
 	export default {
 		data() {
 			return {
+				
 				tipflag:false,
 				tipMsg:'',
 				// 姓名
@@ -73,14 +75,17 @@
 				IdUrl:'',
 				companyList:[]	,
 				zzPhote:'',
-				idImg:''
+				idImg:'',
+				user_token:''
 			}
 		},
 		onReachBottom(){
 			
 		},
 		onLoad(options){
-		     this.setData(options);			
+			this.setData(options);	
+			
+		     		
 		},
 		methods: {
 			backs(){
@@ -91,8 +96,10 @@
 				let msg=e.detail.value;
 				// console.log(msg)
 				if(msg.name=='' || msg.phone=='' ||msg.constructName==''||
-				  msg.construcNum==''||msg.constructIntruduce==''){
-					
+				   msg.construcNum==''||msg.constructIntruduce=='' ||that.zzPhote==''||that.idImg==''){
+					uni.showToast({
+						title:'请将数据填写完整'
+					})
 					return false;
 				}
 				uni.showModal({
@@ -141,7 +148,7 @@
 				uni.chooseImage({
 					count: 1, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						if(type ==1){
@@ -159,7 +166,7 @@
 								// header:{"Content-Type": "multipart/form-data"},
 								formData: {
 									 'type':'crews',
-									 'user_token':_that.user_token
+									 'user_token':_that.userTokens
 								},						
 								// formData:true,
 								success: function(datas) {
@@ -211,6 +218,7 @@
 
 <style scoped lang="scss">
 	@import "../../../static/scss/common.scss";
+	
 	%img-del{
 		position: absolute;
 		right:-20rpx;
@@ -221,17 +229,17 @@
 	}
 	.showtips{
 		  width: 500rpx;
-		  height: 100rpx;
+		  height: 170rpx;
 		  background: #000000;
 		  opacity: 0.6;
 		  border-radius: 16rpx;
 		  position: fixed;
-		  left:200rpx;
+		  left:125rpx;
 		  z-index:1000;
 		  top:500rpx;
 		  color: #FFFFFF;
 		  font-size: 28rpx;
-		  line-height: 100rpx;
+		  line-height: 80rpx;
 		  text-align: center;
 		  
 	}
@@ -250,18 +258,18 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
-			 height: 75rpx;
-			 line-height: 75rpx; 
+			 width:100rpx;
+			 height: 60rpx;
+			 line-height: 60rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{
 		 	display: block;
-		 	width:19rpx;
+		 	width:30rpx;
 		 	height: 30rpx;
-			margin-top:23rpx;
+			margin-top:15rpx;
 		 }
 		 .field{
 			 @extend  %title-field;

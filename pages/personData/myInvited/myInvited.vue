@@ -41,12 +41,11 @@
 		methods: {
 			quits(){
 				if(window.android && window.android.quit){
-									 window.android.quit();
+						 window.android.quit();
 				}else{
-									 window.webkit.messageHandlers.quit.postMessage(123);      
-				}
-			  },
-		}
+				window.webkit.messageHandlers.quit.postMessage('return');
+			  }
+		}}
 	}
 </script>
 

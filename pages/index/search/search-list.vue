@@ -12,25 +12,25 @@
 		</view>
 		<!-- <view style="width:750rpx;height: 93rpx;"></view> -->
 		<view  class="h5-content"  :style="{'margin-top':heights ,'padding-top':marginTop}" >
-			<view class="h5-list" v-for="(item,index) in 8" :key="index" @tap.stop="jumps"> 
-				 <image class="img" src="/static/image/wangyibo.jpg"></image>
+			<view class="h5-list" v-for="(item,index) in dataList" :key="index" @tap.stop="jumps(item.h_type,item.h_id,h_h_key)"> 
+				 <image class="img" :src="item.h_img[0]"></image>
 				 <view class="contents">
 					 <view class="first-line">
-						 <view class="btns btn1">出售</view>
-						 <view class="address">晨光国际1栋2903</view>
+						 <view class="btns btn1"><text v-if="item.h_key==1">出租</text><text v-if="item.h_key==2">出售</text></view>
+						 <view class="address">{{item.h_housename}}</view>
 					 </view>
 					 <view class="second-line">
-						 50㎡/南/精装
+						 {{item.h_mj}}㎡/{{item.h_orientation}}
 					 </view>
 					 <view class="third-line">
-						 嘉善·市区
+						 {{item.h_city}}·{{item.h_area}}
 					 </view>
 					 <view class="fourth-line" >
 						 <view  class="goods" v-for="(item,index) in list" :key='index'>{{item}}</view>
 						<!-- <view>空调</view> -->
 					 </view>
 					 <view class="fifth-line">
-						 <text class="money">2300</text>
+						 <text class="money">{{item.h_money}}</text>
 						 <text class="frequency">元/月</text>
 					 </view>
 				 </view>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+	import app from '../../../App.vue'
 	export default {
 		data() {
 			return {
@@ -50,11 +51,14 @@
 				inputs:'',
 				list:['空调','冰柜','洗衣机'],
 				// 滚动的时候search按钮的位置
-				srcollFlag:false
+				srcollFlag:false,
+				dataList:[],
+				user_token:''
 			}
 		},
 		onLoad(options) {
 			this.setData(options);
+			this.getList();
 		},
 		onReachBottom(){
 			console.log('search-list-onReachBottom')
@@ -99,9 +103,33 @@
 			 search(){
 				 console.log('搜索！')
 			 },
-			 jumps(){
-				 uni.navigateTo({
-				 	url:'/pages/index/houseDetail/houseDetail'
+			 jumps(type,index,saleTypes){
+				 if(saleTypes==1){
+					  uni.navigateTo({
+				 	    url:'/pages/index/houseDetail/houseDetail?types='+type+'&ids='+index+'&user_token='+this.user_token
+				     })
+				 }else{
+					 uni.navigateTo({
+					    url:'/pages/index/houseDetail/houseDetail1?types='+type+'&ids='+index+'&user_token='+this.user_token
+					 })
+				 }
+				
+				 
+				 
+			 },
+			 getList(){
+				 let that=this;
+				 that.$h5.post('Houses/search',{
+					 keywords:that.inputValue
+				 },(res)=>{
+					  if(res.code==0){
+						  that.dataList=res.data;
+						  that.dataList.map(res1=>{
+							  res1.h_img=res1.h_img.split('，')
+							  res1.h_img[0]=app.globalData.img+res1.h_img[0];
+							  res1.h_facility=res1.h_facility.split('，')
+						  })
+					  }
 				 })
 			 }
 			
@@ -115,15 +143,12 @@
 	   .search-content{
 		   width:750rpx;
 		   height: 90rpx;
-		   // padding-bottom:20rpx;
 		   box-sizing: border-box;
-           display: flex;
+       display: flex;
 		   align-items: center;
 		   position: fixed;
 		   left:0;
-		   // top:var(--status-bar-height);
 		   background-color: #fff;
-		  
 		   z-index: 10;;
 	   }
 	   .img-back{

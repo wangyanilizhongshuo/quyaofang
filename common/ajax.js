@@ -55,12 +55,13 @@ let request = {
                'Authorization':'Bearer'
             },
             data:{
-				'user_token':uni.getStorageSync('token'),
-				 // 'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05',
+				   // 'user_token':uni.getStorageSync('token'),
+				      'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861c0b5599a63ec59a8cc667cc35e0b5b30cc35df2fc885f3a37551d9722dae9557c6c1c617638c6424a1d4622d0baf0279d35d354898b8ad4b9a3115a80769bf05',
 				 ...data
 			},
 			 
             success(res) {
+				console.log(uni.getStorageSync('token'))
               if ((res.statusCode !== 200 || typeof res.data !== 'object') && res.statusCode !== 401 && res.statusCode !== 402 && res.statusCode !== 201 && res.statusCode !== 400 && res.statusCode !== 403 && res.statusCode !== 503 && res.statusCode !== 422) {
                           _this.showError('您的网络开小差了，请重试');
                           return false;
@@ -117,18 +118,15 @@ let request = {
           url: api_root+url,
           header: {
              'Accept': 'application/json'
-			// 'content-type': 'multipart/form-data'
-            // 'Authorization':'Bearer'+uni.getStorageSync('token')
           },
           method: 'POST',
           data:{
-			  'user_token':uni.getStorageSync('token'),
-			  // 'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861b5d6b09fadcdc8e72579284d055776b58ed5eddb03470bab0ee956d24a56111d36cd27d5cc4561ed0799c9c8eede5563d35d354898b8ad4b9a3115a80769bf05',
+			  // 'user_token':uni.getStorageSync('token'),
+			  'user_token':'c4a825695b0fe6a179a750b026c4749334ce1129057cfe9e4f62d370e23c3861c0b5599a63ec59a8cc667cc35e0b5b30cc35df2fc885f3a37551d9722dae9557c6c1c617638c6424a1d4622d0baf0279d35d354898b8ad4b9a3115a80769bf05',
           	  ...data
           },
           success(res) {
-			  // console.log('success')
-			  // console.log(res)
+			  console.log(uni.getStorageSync('token'))
             if ((res.statusCode !== 200 || typeof res.data !== 'object') && res.statusCode !== 402 && res.statusCode !== 401 && res.statusCode !== 201 && res.statusCode !== 400 && res.statusCode !== 422) {
               _this.showError('您的网络开小差了，请重试');
               return false;

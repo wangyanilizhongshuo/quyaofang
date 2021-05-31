@@ -101,20 +101,10 @@
 			 </view>
 			 <view class="btn" @tap.stop="sendMsg">提交</view>
 		</view>
-	  <view class="shareMask" v-if="shareDiaFlag"></view>
-	 <view class="shareDialog" v-if="shareDiaFlag">
-			<view class="top">
-	               <view class="left styless">
-					   <image  class="logo-img" src="../../../static/image/weixin-logo.png"></image>
-					   <view class="wx-word word">分享给好友</view>
-				   </view>
-				   <view class="right styless">
-					   <image  class="logo-img" src="../../../static/image/pengyouquan.png"></image>
-					   <view class="pyq-word word">分享到朋友圈</view>
-				   </view>
-			</view>
-			<view class="down" @tap="shareDiaFlag=false">取消</view>
-		</view>
+	 <view class="unLoginBoxMask" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'></view>
+	 <view class="unLoginBox" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'>
+	 		 <image class="imgs" src="../../../static/image/onLoginBg.png"></image>
+	 </view>
 		<view class="showtips" v-if="tipflag">{{tipMsg}}</view>
 </view>	</view>
 </template>
@@ -148,7 +138,8 @@
 			   ids:'',
 			   
 			   houseValue:'',
-			  shareDiaFlag:false
+			  shareDiaFlag:false,
+			  user_token:''
 					
 			}
 		},
@@ -181,7 +172,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');     
 				 }
 			   },
 			
@@ -191,6 +182,10 @@
 			 },
 			 //是否收藏
 			 getCollet(){
+				 if(!this.user_token){
+					 this.shareDiaFlag=true;
+					 return false
+				 }
 				 let that=this;
 				that.collectionFlag=(!that.collectionFlag);
 				console.log()
@@ -200,12 +195,18 @@
 					 class:that.types
 				 },(res)=>{
 					 if(res.code ==0){
-						 console.log(res)
+						 that.tipflag=true ;
+						 that.tipMsg='收藏成功';
+						 setTimeout(()=>{
+						 		that.tipflag=false;
+						 		that.maskFlag=false ;
+						 },3000)
 						 
 					 }
 				 })
 			 },
 			 sendMsg(){
+				
 				 let that=this;
 				 let aa=[];
 				 that.labelList.map((res)=>{
@@ -216,19 +217,22 @@
 				 aa=aa.join(',');
 				 that.$h5.post('Message/clickmsg',{
 					 content:aa,
-					 release:that.houseValue.h_phone,
+					 release:that.houseValue.h_release,
 					 h_resource:1,
 					 h_id:that.ids,
 					 h_type:that.types
 				 },(res)=>{
 					 if(res.code ==0){
-						 that.maskFlag=false
+						 that.maskFlag=false;
+					 }else if(res.code ==9){
+						 that.maskFlag=false;
+						 that.shareDiaFlag=true;
 					 }else{
 						 that.tipflag=true ;
 						 that.tipMsg=res.message;
 						 setTimeout(()=>{
 						 		that.tipflag=false;
-								 that.maskFlag=false;
+						 		that.maskFlag=false ;
 						 },3000)
 					 }
 				 })
@@ -252,22 +256,32 @@
 			 },
 			 // 打电话
 			 call(){
+				 if(!this.user_token){
+						 this.shareDiaFlag=true;
+						 return false
+				 }
+				 let that=this;
 				 uni.makePhoneCall({
-				     phoneNumber: this.houseValue.h_phone, //仅为示例
+				     phoneNumber: that.houseValue.h_phone, //仅为示例
 					 success(res){
-						 // console.log(res);
-						 // console.log('sucecess')
+						 window.webkit.messageHandlers.quit.postMessage(that.houseValue.h_phone);		
 					 },
 					 fail(res){
-						console.log(res) 
+						
 					 }
 				 });
 			 },
 			 // 留言
 			 stopMove(){
-				    this.maskFlag=true;
-					this.arrs.top=0+'rpx';
-					this.arrs.left=0+'rpx';
+				  if(this.user_token){
+					  this.maskFlag=true;
+					 this.arrs.top=0+'rpx';
+					 this.arrs.left=0+'rpx';
+				  }
+				  else{
+					  
+				  }
+				   
 			 },
 			 random(){
 				 let labelLists=this.labelList;
@@ -365,6 +379,12 @@
 .topss{
 	   @extend  %top-style;
 }
+.unLoginBoxMask{
+	 @extend  %unLoginboxMask;
+}
+.unLoginBox{
+	@extend  %unLoginbox;
+}
 %padding-style{
 	width: 750rpx;
 	padding: 0 40rpx 0 30rpx;
@@ -375,8 +395,8 @@
 	box-sizing: border-box;
 }
 .back{
-	width: 50rpx;
-	height: 50rpx;
+	width: 60rpx;
+	height: 60rpx;
 	display: block;
 	position:fixed;
 	left:30rpx;

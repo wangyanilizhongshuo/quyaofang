@@ -16,10 +16,12 @@
 	export default {
 		data() {
 			return {
-				inputs:''
+				inputs:'',
+				user_token:''
 			}
 		},
 		onLoad(options) {
+			this.setData(options)
 			console.log(options)
 			console.log(234345)
 		},
@@ -51,14 +53,14 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					window.webkit.messageHandlers.quit.postMessage('return');    
 				 }
 			  },
 		     // 跳转到列表页面
 			jumps(){
 				let that=this;
 				uni.navigateTo({
-					url:'/pages/index/search/search-list?inputValue='+that.inputs
+					url:'/pages/index/search/search-list?inputValue='+that.inputs+'&user_token='+that.user_token
 				})
 			}
 		}
@@ -71,7 +73,7 @@
 	   .search-content{
 		   width:750rpx;
 		  
-           display: flex;
+       display: flex;
 		   align-items: center;
 	   }
 	   .img-back{

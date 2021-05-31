@@ -35,7 +35,12 @@
 						<view class="down">{{item.house_intro}}</view>
 					</view>
 				</view>	
+				
 			</view>
+		</view>
+		<view class="unLoginBoxMask" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'></view>
+		<view class="unLoginBox" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'>
+				 <image class="imgs" src="../../../static/image/onLoginBg.png"></image>
 		</view>
 	</view>
 </template>
@@ -45,7 +50,10 @@
 		data() {
 			return {
 				designList:'',
-				decorateList:''
+				decorateList:'',
+				user_token:'',
+				shareDiaFlag:false
+				
 			}
 		},
 		onReachBottom(){
@@ -54,6 +62,12 @@
 		onLoad(options){
             this.setData(options);
 			this.getLists();
+			if(this.user_token){
+					uni.setStorageSync('goUserToken',this.user_token)
+			}
+			if(uni.getStorageSync('goUserToken')){
+					 this.user_token=uni.getStorageSync("goUserToken")
+			}
 		},
 		methods: {
 			quits(){
@@ -61,7 +75,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					window.webkit.messageHandlers.quit.postMessage('return');    
 				 }
 			  },
 			getLists(){
@@ -92,9 +106,14 @@
 			 },
 			// 申请经纪人跳转
 			jumps(){
-				uni.navigateTo({
-					url:'/pages/index/design-decoration/design-companyJoin'
-				})
+				if(!this.user_token){
+					 this.shareDiaFlag=true;
+				}else{
+					uni.navigateTo({
+					   url:'/pages/index/design-decoration/design-companyJoin'
+				   })
+				}
+				
 			},
 			
 			jumpDetail(id,type){
@@ -111,6 +130,12 @@
 
 <style scoped lang="scss">
 	@import "../../../static/scss/common.scss";
+	.unLoginBoxMask{
+		 @extend  %unLoginboxMask;
+	}
+	.unLoginBox{
+		@extend  %unLoginbox;
+	}
 	.zw{
 		height: var(--status-bar-height);
 		width: 750rpx;
@@ -130,17 +155,17 @@
 		 border-bottom:2rpx solid #eee;
 		 padding-left:0rpx;
 		 .left{
-			 width:60rpx;
-			 height: 48rpx;
-			 line-height: 48rpx; 
-			position: absolute;
-			left:30rpx;
-			top:7.5rpx;
+			 width:100rpx;
+			 height: 60rpx;
+			 line-height: 60rpx; 
+			 position: absolute;
+			 padding-left:30rpx;
+			 top:7.5rpx;
 			 .img{
 			 	display: block;
-			 	width:19rpx;
+			 	width:30rpx;
 			 	height: 30rpx;
-			    margin-top:13rpx;
+			  margin-top:15rpx;
 			 }
 		 }
 		 .center{

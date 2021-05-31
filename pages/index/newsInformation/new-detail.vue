@@ -5,18 +5,20 @@
 			<view class="left"  @tap.stop="backs" >
 				<image class="img"src="/static/image/back.png"></image>
 			</view>
-			<view class="field">咨询详情</view>
+			<view class="field">资讯详情</view>
 		</view>
 		<view style="height: 75rpx;"></view>
 		<view class="contents">
 			 <view class="title">
 				 {{dataList.house_title}}
 			 </view>
-			 <image class="img" v-if="dataList!=''" :src="'https://yaofangme.hzbixin.cn/'+dataList.house_img"></image>
-			 <view class="describe">
+       <video v-if="dataList!=''"  class="img" :src="dataList.video_link" autoplay:='true' controls="" :poster="'https://yaofangme.hzbixin.cn/'+dataList.cover_img"></video>
+			 <!-- <image :src="'https://yaofangme.hzbixin.cn/'+dataList.cover_img"></image> -->
+			<!-- <view class="describe">
 					{{dataList.house_content}}
 				                             
-			 </view>
+			 </view> -->
+       <rich-text :nodes="dataList.house_content"></rich-text>
 		</view>
 	</view>
 </template>
@@ -75,11 +77,11 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{
@@ -104,7 +106,7 @@
 		.img{
 			display: block;
 			width: 670rpx;
-			height: 200rpx;
+			height: 350rpx;
 			margin-top:36rpx;
 			margin-bottom: 50rpx;
 		}

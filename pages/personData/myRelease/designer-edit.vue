@@ -98,7 +98,7 @@
 				uni.chooseImage({
 					count: 1, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						if(type ==1){
@@ -164,11 +164,11 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{

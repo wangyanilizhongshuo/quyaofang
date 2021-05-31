@@ -27,6 +27,10 @@
 				  
 			  </view>
 		</view>
+		<view class="unLoginBoxMask" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'></view>
+		<view class="unLoginBox" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'>
+				 <image class="imgs" src="../../../static/image/onLoginBg.png"></image>
+		</view>
 	</view>
 </template>
 
@@ -36,7 +40,9 @@
 			return {
 				activeIndex:0,
 				typeList:[],
-				dataList:''
+				dataList:'',
+				shareDiaFlag:false,
+				user_token:''
 				
 				
 				
@@ -47,6 +53,12 @@
 		},
 		onLoad(options){
 		     this.setData(options);	
+			 if(this.user_token){
+			 		uni.setStorageSync('goUserToken',this.user_token)
+			 }
+			 if(uni.getStorageSync('goUserToken')){
+			 		this.user_token=uni.getStorageSync("goUserToken")
+			 }
 			 this.getTypes();
 			 this.getList(1,0)
 			 
@@ -57,7 +69,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');     
 				 }
 			  },
 			// title 滚动条的滚动
@@ -66,9 +78,13 @@
 			},
 			// 公司加入的跳转
 			companyJoin(){
-			   uni.navigateTo({
-			   	url:'/pages/index/build-material/companyJoin'
-			   })
+				if(!this.user_token){
+					 this.shareDiaFlag=true;
+				}else{
+					uni.navigateTo({
+					    url:'/pages/index/build-material/companyJoin'
+				    })
+				}
 			},
 			// 详情页面
 			jumps(id){
@@ -90,6 +106,7 @@
 			getList(types,indx){
 				this.activeIndex=indx;
 				let that=this;
+				that.dataList=[];
 				that.$h5.post('fitment/holdlist',{
 					type:types
 				},(res)=>{
@@ -105,6 +122,12 @@
 
 <style scoped lang="scss">
 	@import "../../../static/scss/common.scss";
+	.unLoginBoxMask{
+		 @extend  %unLoginboxMask;
+	}
+	.unLoginBox{
+		@extend  %unLoginbox;
+	}
 	.zw{
 		height: var(--status-bar-height);
 		width: 750rpx;
@@ -124,18 +147,18 @@
 		 padding-right:30rpx;
 		 border-bottom:1rpx solid #eee;
 		 .left{
-			 width:60rpx;
-			 height: 75rpx;
-			 line-height: 75rpx; 
+			 width:100rpx;
+			 height: 60rpx;
+			 line-height: 60rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{
 		 	display: block;
-		 	width:19rpx;
+		 	width:30rpx;
 		 	height: 30rpx;
-			margin-top:23rpx;
+			margin-top:15rpx;
 		 }
 		 .companyJoin{
 			 color: #303133;

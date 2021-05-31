@@ -54,7 +54,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');    
 				 }
 			  },
 			  getMsg(){
@@ -104,16 +104,16 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{
 		 	display: block;
-		 	width:19rpx;
+		 	width:30rpx;
 		 	height: 30rpx;
 			margin-top:23rpx;
 		 }

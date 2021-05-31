@@ -40,11 +40,14 @@
 				  <view class="area list" v-if="houseTypeStyle!='生产厂房' && houseTypeStyle!='街面房'&& houseTypeStyle!='办公用房'">
 					   <view class="field">所在小区</view>
 						<view class="value">
-							<input :style="smallArea != ''? 'color:#303133':''" class="uni-input" @input="getxiaoquList"   name="smallArea" v-model="smallArea" placeholder="请选择所在小区"/>
+							<!-- <input :style="smallArea != ''? 'color:#303133':''" class="uni-input" @input="getxiaoquList"   name="smallArea" v-model="smallArea" placeholder="请选择所在小区"/>
 						</view>
 						<picker    @change="PickerChange($event,10)" :value="index" :range="smallAreaList" >
 				             <image class="arrow"  src="../../../static/image/right-gray.png" ></image>
-						 </picker>
+						 </picker> -->
+             <input :style="smallArea != ''? 'color:#303133':''" class="uni-input"   name="smallArea" v-model="smallArea" placeholder="请选择所在小区"/>
+             </view>
+            
 				  </view>
 				  <view class="detailAddress list">
 					   <view class="field">具体地址</view>
@@ -132,13 +135,13 @@
 				  
 				  <view class="houseFloor list" v-if="lcFlag">
 					   <view class="field">楼层</view>
-					   <input class="value" name="floor"  v-model="floorValue" :style="floorValue!=''?'color:#303133':''" maxlength="8"  placeholder="例如:独栋/共一层"  />
+					   <input class="value" name="floor" type="number"  v-model="floorValue" :style="floorValue!=''?'color:#303133':''" maxlength="8"  placeholder="例如:独栋/共一层"  />
 				       <image style="visibility: hidden;" class="arrow"  src="../../../static/image/right-gray.png"></image>
 				  </view>
 				  <view class="house-arrow list" v-if="!lcFlag">
 					   <view class="field">楼层</view>
 					   <picker   class="value" @change="PickerChange($event,60)" :value="index" :range="lcFloorList">
-							<input class="uni-input" :style="floorValue != ''? 'color:#303133':''"  :disabled="true"  name="floor" v-model="floorValue" placeholder="请选择楼层"/>
+							<input class="uni-input" type="number" :style="floorValue != ''? 'color:#303133':''"  :disabled="true"  name="floor" v-model="floorValue" placeholder="请选择楼层"/>
 						</picker>
 					   <image class="arrow"  src="../../../static/image/right-gray.png"></image>
 				  </view>
@@ -376,10 +379,10 @@
 				// 朝向list
 				// directionList:['东','西','南','北'],
 				directionList:['南北','南','西','北','东'],
-				houseUseWayList:['住宅','出租','商业用房','厂房','仓库'],
-				transactOwnShipList:['证券交易','期货交易','其他交易'],
+				houseUseWayList:['服务业用房','商业用房','厂房','仓库','办公室','住宅','教育用房','文化用房','医疗用房','科学实验研究用房','其他'],
+				transactOwnShipList:['初始登记','转移登记','变更登记','他项权利登记','注销登记','补证换证登记'],
 				propertyRightOwnShipList:['国有房产','集体所有房产','私有房产','联营企业房产','股份制企业房产','涉外房产','其他产'],
-				houseUseTimeList:['1年','2年','3年','4年','5年','6年'],
+				houseUseTimeList:['40年','50年','70年'],
 				// 公寓房毛坯房等等的选择
 				houseTypeFlag:[false,false,false,false,false],
 				singleBuildingList:['是','否'],
@@ -414,7 +417,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');      
 				 }
 			  },
 			  // 获取小区的列表
@@ -681,8 +684,9 @@
 				uni.chooseImage({
 					count: 6 - lls.length, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
+						
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						_that.photoList = lls.concat(res.tempFilePaths);
 						tempFilePaths.map(sos => {
@@ -693,7 +697,7 @@
 								// header:{"Content-Type": "multipart/form-data"},
 								formData: {
 									type:'sell',
-									'user_token':_that.user_token
+									'user_token':_that.userTokens
 								},						
 								// formData:true,
 								success: function(datas) {
@@ -701,12 +705,11 @@
 									// let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let aa = results.data[0];
-									
-									if(results.code ==0){
+									if(results.code==0){
 										_that.upUrlList.push(aa)
 									}else{
 										_that.tipflag=true ;
-										_that.tipMsg=aa.message;
+										_that.tipMsg=results.message;
 										setTimeout(()=>{
 												_that.tipflag=false
 										},3000)
@@ -830,16 +833,16 @@
 		.sale-title{
 			 @extend  %title;
 			 .left{
-				 width:60rpx;
+				 width:100rpx;
 				 height: 75rpx;
 				 line-height: 75rpx; 
 				 position: absolute;
-				 left:30rpx;
+				 padding-left:30rpx;
 				 top:7.5rpx;
 			 }
 			.img{
 				display: block;
-				width:19rpx;
+				width:30rpx;
 				height: 30rpx;
 				margin-top:23rpx;
 			}

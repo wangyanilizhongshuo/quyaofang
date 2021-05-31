@@ -9,6 +9,7 @@
 			<view class="right" @tap.stop="jumps">申请经纪人</view>
 		</view>
 		<view class="statusBox" ></view>
+		<!-- <view style="width: 300rpx;height:300rpx;background-color: red;" @tap.stop='test'>请点击我</view> -->
 		<view class="h5-contents">
 			<view class="list" v-for="(item,index) in agentList" :key="index">
 				<image class="imgs left" :src="item.house_img"></image>
@@ -21,14 +22,17 @@
 						<image class="logo-image" src="/static/image/message.png"></image>
 						<view class="filed">给ta留言</view>
 					</view> -->
-					<view class="second styless"  @tap.stop="call(item.house_phone)">
+					<view class="second styless"  @tap.stop="calls(item.house_phone)">
 						<image class="logo-image" src="/static/image/call.png"></image>
 						<view class="filed">在线联系</view>
 					</view>
 				</view>
 			</view>
 		</view>
-		
+		<view class="unLoginBoxMask" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'></view>
+		<view class="unLoginBox" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'>
+				 <image class="imgs" src="../../../static/image/onLoginBg.png"></image>
+		</view>
 	</view>
 </template>
 
@@ -37,7 +41,9 @@
 	export default {
 		data() {
 			return {
-				agentList:''
+				agentList:'',
+				user_token:'',
+				shareDiaFlag:false,
 				
 			}
 		},
@@ -46,6 +52,12 @@
 		},
 		onLoad(options){
 		     this.setData(options);	
+			 if(this.user_token){
+			 		uni.setStorageSync('goUserToken',this.user_token)
+			 }
+			 if(uni.getStorageSync('goUserToken')){
+			 		 this.user_token=uni.getStorageSync("goUserToken")
+			 }
 			 this.getList();
 		},
 		methods: {
@@ -54,19 +66,47 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					 window.webkit.messageHandlers.quit.postMessage('return');      
 				 }
 			  },
 			// 申请经纪人跳转
 			jumps(){
-				uni.navigateTo({
-					url:'/pages/index/agent-service/apply-agent'
-				})
+				if(!this.user_token){
+					 this.shareDiaFlag=true;
+				}else{
+					uni.navigateTo({
+				 	     url:'/pages/index/agent-service/apply-agent'
+				   })
+				}
+				
 			},
+			test(){
+				if(window.android && window.android.getVersion){
+				       window.android.getVersion();
+				 }else{
+					  window.webkit.messageHandlers.getVersion.postMessage(12345); 
+				 }
+			},
+			 
 			// 打电话
-			call(number){
+			calls(numbers){
+				let  number=numbers;
 				uni.makePhoneCall({
-				    phoneNumber:number //仅为示例
+				    phoneNumber:number ,//仅为示例,
+					success(res){
+						// if(window.android && window.android.quits){
+						//        window.android.quits();
+						//  }else{
+						// 	  window.webkit.messageHandlers.getVersion.postMessage(12345); 
+						//  }
+						if(window.android && window.android.quit){
+						}else{
+							window.webkit.messageHandlers.quit.postMessage(number);			 
+						}
+					},
+					fail(res){
+							
+					}
 				});
 			},
 			getList(){
@@ -89,6 +129,12 @@
 
 <style scoped lang="scss">
 	@import "../../../static/scss/common.scss";
+	.unLoginBoxMask{
+		 @extend  %unLoginboxMask;
+	}
+	.unLoginBox{
+		@extend  %unLoginbox;
+	}
 	.zw{
 		height: var(--status-bar-height);
 		width: 750rpx;
@@ -108,17 +154,15 @@
 		 border-bottom:2rpx solid #eee;
 		 padding-left:0rpx;
 		 .left{
-			 width:60rpx;
-			 height: 48rpx;
-			 line-height: 48rpx; 
-			position: absolute;
-			left:30rpx;
-			top:7.5rpx;
+			 width:100rpx;
+			 height: 60rpx;
+			 position: absolute;
+       padding-left:30rpx;
 			 .img{
 			 	display: block;
-			 	width:19rpx;
+			 	width:30rpx;
 			 	height: 30rpx;
-			    margin-top:13rpx;
+			  margin-top:15rpx;
 			 }
 		 }
 		 .center{

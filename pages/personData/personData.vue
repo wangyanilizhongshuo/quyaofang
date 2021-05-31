@@ -47,7 +47,8 @@
 				ImageUrl:'',
 				personMsg:{},
 				tipsFlag:false,
-				tipsMsg:''
+				tipsMsg:'',
+				
 				
 			}
 		},
@@ -66,7 +67,7 @@
 				if(window.android && window.android.quit){
 						 window.android.quit();
 				}else{
-						 window.webkit.messageHandlers.quit.postMessage(123);      
+					window.webkit.messageHandlers.quit.postMessage('return');    
 				}
 			  },
 			jumpsRepairName(){
@@ -88,7 +89,7 @@
 					uni.chooseImage({
 						count: 1, //上传图片的数量，默认是9
 						sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-						sourceType: ['album', 'camera'], //从相册选择
+						sourceType: ['album'], //从相册选择
 						success: function(res) {
 							const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 							_that.ImageUrl=tempFilePaths;
@@ -100,7 +101,7 @@
 								// header:{"Content-Type": "multipart/form-data"},
 								formData: {
 									"type":'user',
-									 'user_token':_that.user_token
+									 'user_token':_that.userTokens
 								},
 							success: function(datas) {
 								let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
@@ -187,11 +188,11 @@
 	.sale-title{
 		 @extend  %title;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 	     }
 		.img{

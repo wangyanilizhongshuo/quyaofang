@@ -61,6 +61,10 @@
 			<button class="btn" form-type="submit">提交申请</button>
 			</form>
 		</view>
+		<!-- <view class="unLoginBoxMask" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'></view>
+		<view class="unLoginBox" v-if="shareDiaFlag" @tap.stop='shareDiaFlag=false'>
+				 <image class="imgs" src="../../../static/image/onLoginBg.png"></image>
+		</view> -->
 	</view>
 </template>
 
@@ -94,16 +98,17 @@
 				positiveImage:'',
 				negativeImage:'',
 				// 公司类别的列表
-				categoryNum:''	
+				categoryNum:''	,
+				user_token:''
 			}
 		},
 		onReachBottom(){
 			
 		},
 		onLoad(options){
-		     this.setData(options);	
-				 
-			
+			this.setData(options);
+			 // console.log(this.user_token)
+          
 		},
 		methods: {
 			backs(){
@@ -122,11 +127,22 @@
 					})
 					return   false;
 				}
+				if(that.positiveImage==''){
+					uni.showToast({
+						title:'营业执照照片没有上传'
+					})
+					return   false;
+				}
+				if(that.negativeImage==''){
+					uni.showToast({
+						title:'法人身份证照片没有上传'
+					})
+					return   false;
+				}
 				uni.showModal({
 					title:'数据存在不可二次更改,确定提交数据？',
 					success:function(res){
 						if(res.confirm){
-							
 							 that.$h5.post('fitment/addfitment',{
 							 	house_name:that.msgList.name,
 							 	house_phone:that.msgList.phone,
@@ -178,12 +194,12 @@
 				let _that = this;
 				let  num=1;
 				if(type ==3){
-					num=5
+					num=5;
 				}
 				uni.chooseImage({
 					count: num, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						if(type ==1){
@@ -201,15 +217,17 @@
 										// header:{"Content-Type": "multipart/form-data"},
 										formData: {
 										  'type':'design',
-										  'user_token':_that.user_token
+										  'user_token':_that.userTokens
 								},
 								success: function(datas) {
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let aa = results.data[0];
 									if(type ==1){
 									  _that.positiveImage=aa;
+									  console.log('zhengmian',_that.positiveImage)
 									}else  if(type ==2 ){
 									 _that.negativeImage=aa;
+									 console.log('反面',_that.negativeImage)
 									}else if (type ==3){
 										_that.headlists.push(aa);
 									}
@@ -266,6 +284,7 @@
 
 <style scoped lang="scss">
 	@import "../../../static/scss/common.scss";
+	
 	%img-del{
 		position: absolute;
 		right:-20rpx;
@@ -289,11 +308,11 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{

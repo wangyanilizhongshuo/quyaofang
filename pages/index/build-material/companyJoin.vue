@@ -60,6 +60,7 @@
 			</view>
 			<button class="btn" form-type="submit">提交申请</button>
 			</form>
+			
 		</view>
 	</view>
 </template>
@@ -87,12 +88,14 @@
 				// 身份证Id
 				// IdUrl:'',
 				companyList:[],
+				shareDiaFlag:false,
 				msgList:'',
 				
 				headlists:[],
 				// 正面
 				positiveImage:'',
 				negativeImage:'',
+				user_token:''
 				// 公司类别的列表
 				
 			
@@ -104,9 +107,11 @@
 			
 		},
 		onLoad(options){
-		     this.setData(options);	
-				 
-			 this.getTypes();
+			this.setData(options);
+			this.getTypes();
+			
+		    
+			 
 		},
 		methods: {
 			backs(){
@@ -143,7 +148,7 @@
 							  	house_name:that.msgList.name,
 							  	house_phone:that.msgList.phone,
 							  	house_nick:that.msgList.company,
-							  	house_type:that.comCateNum,
+							  	house_type:that.comCateNum+1,
 							  	house_intro:that.msgList.companyIntruduce,
 							  	// 正
 							  	house_business:that.positiveImage,
@@ -186,7 +191,7 @@
 				uni.chooseImage({
 					count: num, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						if(type ==1){
@@ -204,7 +209,7 @@
 								// header:{"Content-Type": "multipart/form-data"},
 								formData: {
 									'type':'household',
-									 'user_token':_that.user_token
+									 'user_token':_that.userTokens
 								},
 								success: function(datas) {
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
@@ -269,6 +274,7 @@
 
 <style scoped lang="scss">
 	@import "../../../static/scss/common.scss";
+	
 	%img-del{
 		position: absolute;
 		right:-20rpx;
@@ -292,18 +298,18 @@
 		 @extend  %title;
 		 border-bottom:2rpx solid #eee;
 		 .left{
-			 width:60rpx;
-			 height: 75rpx;
-			 line-height: 75rpx; 
+			 width:100rpx;
+			 height: 60rpx;
+			 line-height: 60rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{
 		 	display: block;
-		 	width:19rpx;
+		 	width:30rpx;
 		 	height: 30rpx;
-			margin-top:23rpx;
+			margin-top:15rpx;
 		 }
 		 .field{
 			 @extend  %title-field;

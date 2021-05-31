@@ -10,7 +10,7 @@
 		<view style="height: 75rpx;;"></view>
 		<view class="contents">
 			 <view class="list"  v-for="(item,index) in dataList" :key="index" @tap.stop="jumps(item.id)">
-				 <image class="imgs left" :src="'https://yaofangme.hzbixin.cn/'+item.house_img"></image>
+				 <image class="imgs left" :src="'https://yaofangme.hzbixin.cn/'+item.cover_img"></image>
 				 <view class="right">
 					 <view class="first">{{item.house_title}}</view>
                      <view class="second">{{item.house_headings}}</view>         
@@ -34,6 +34,7 @@
 		onLoad(options){
 			this.setData(options);
 			this.getData();
+      console.log(436)
 		},
 		methods: {
 			quits(){
@@ -41,7 +42,7 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					window.webkit.messageHandlers.quit.postMessage('return');   
 				 }
 			  },
 			// 跳转到详情页
@@ -52,9 +53,10 @@
 				})
 			},
 			getData(){
-				let that=this
+				let that=this;
+       
 				that.$h5.post('News/newlist',{},(res)=>{
-					console.log(res)
+					
 					if(res.code ==0){
 						that.dataList=res.data;
 						that.dataList.map(res=>{
@@ -82,11 +84,11 @@
 		
 		 @extend  %title;
 		 .left{
-			 width:60rpx;
+			 width:100rpx;
 			 height: 75rpx;
 			 line-height: 75rpx; 
 			 position: absolute;
-			 left:30rpx;
+			 padding-left:30rpx;
 			 top:7.5rpx;
 		 }
 		 .img{

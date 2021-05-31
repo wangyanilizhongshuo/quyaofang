@@ -36,11 +36,14 @@
    			  <view class="area list"  v-if="houseTypeStyle !='生产厂房' && houseTypeStyle !='街面房' && houseTypeStyle !='办公用房'" >
    				   <view class="field">所在小区</view>
 				   <view class="value">
-				      <input :style="smallArea != ''? 'color:#303133':''" class="uni-input" @input="getxiaoquList"   name="smallArea" v-model="smallArea" placeholder="请选择所在小区"/>
+				     <!-- <input :style="smallArea != ''? 'color:#303133':''" class="uni-input" @input="getxiaoquList"   name="smallArea" v-model="smallArea" placeholder="请选择所在小区"/>
    			       </view>
 				   <picker   @change="PickerChange($event,4)" :value="index" :range="smallAreaList">
    			         <image class="arrow"  src="../../../static/image/right-gray.png"></image>
-				   </picker>
+				   </picker> -->
+           <input :style="smallArea != ''? 'color:#303133':''" class="uni-input"   name="smallArea" v-model="smallArea" placeholder="请选择所在小区"/>
+               </view>
+          
    			  </view>
    			  <!-- 办公用房 -->
    			  <!-- 办公用房 -->
@@ -398,28 +401,29 @@
 				 if(window.android && window.android.quit){
 					 window.android.quit();
 				 }else{
-					 window.webkit.messageHandlers.quit.postMessage(123);      
+					window.webkit.messageHandlers.quit.postMessage('return');    
 				 }
 			     
 			  },
 			  //获取区,县列表
 			  getquList(){
-			  				  let that=this;
-			  				  that.regionList=[];
-			  				  that.$h5.post('district/getdistrict',{
-			  					  district:that.city
-			  				  },(res)=>{
-			  					 if(res.code ==0){
-			  						 let aa=res.data;
-			  						 aa.map(res=>{
-			  						  that.regionList.push(res.district_name)	 ;
-			  						 
-			  						 })
-			  					 }
-			  				  })
+					  let that=this;
+					  that.regionList=[];
+					  that.$h5.post('district/getdistrict',{
+						  district:that.city
+					  },(res)=>{
+						 if(res.code ==0){
+							 let aa=res.data;
+							 aa.map(res=>{
+							  that.regionList.push(res.district_name)	 ;
+							 
+							 })
+						 }
+					  })
 			  },
 			  // 获取小区的列表
 			  getxiaoquList(e){
+				  console.log('修去')
 			  				  let that=this;
 			  				  that.smallAreaList=[];
 			  				  that.smallAreaListBox=[];
@@ -652,7 +656,7 @@
 				uni.chooseImage({
 					count: 6 - lls.length, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
 						const tempFilePaths = res.tempFilePaths; //拿到选择的图片，是一个数组
 						_that.photoList = lls.concat(res.tempFilePaths)
@@ -664,7 +668,7 @@
 								// header:{"Content-Type": "multipart/form-data"},
 								formData: {
 									 type:'rent',
-									 'user_token':_that.user_token
+									 'user_token':_that.userTokens
 								},	
 								success: function(datas) {
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
@@ -672,11 +676,9 @@
 									console.log(aa)
 									if(results.code ==0){
 										_that.upUrlList.push(aa)
-										console.log(aa,'cuole')
 									}else{
-										console.log(aa,'duilw')
 										_that.tipflag=true ;
-										_that.tipMsg=aa.message;
+										_that.tipMsg=results.message;
 										setTimeout(()=>{
 												_that.tipflag=false
 										},3000)
@@ -720,6 +722,7 @@
 					this.city= this.cityList[e.target.value];
 					this.getquList();//选择市结束后，选择区
 				}else if (type ==3){
+					console.log(12345678)
 					this.region= this.regionList[e.target.value];
 					this.getxiaoquList();
 				}else if (type ==4){
@@ -785,11 +788,11 @@
 		.sale-title{
 			 @extend  %title;
 			 .left{
-				 width:60rpx;
+				 width:100rpx;
 				 height: 75rpx;
 				 line-height: 75rpx; 
 				 position: absolute;
-				 left:30rpx;
+				 padding-left:30rpx;
 				 top:7.5rpx;
 		     }
 			.img{

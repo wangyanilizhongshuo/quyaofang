@@ -48,7 +48,7 @@
 				uni.chooseImage({
 					count: 1, //上传图片的数量，默认是9
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], //从相册选择
+					sourceType: ['album'], //从相册选择
 					success: function(res) {
 						_that.tipsMsg='成功'
 						setTimeout(()=>{
@@ -64,11 +64,12 @@
 								name: 'file',
 								formData: {
 									  type:'service',
-									 'user_token':_that.user_token
+									 'user_token':_that.userTokens
 								},	
 								success: function(datas) {
 									let results = typeof datas.data === "object" ? datas.data : JSON.parse(datas.data);
 									let aa = results.data[0];
+									console.log(results)
 									if(results.code ==0){
 											_that.upUrlList.push(aa)
 
@@ -149,11 +150,11 @@
 		.sale-title{
 			 @extend  %title;
 			 .left{
-				 width:60rpx;
+				 width:100rpx;
 				 height: 75rpx;
 				 line-height: 75rpx; 
 				 position: absolute;
-				 left:30rpx;
+				 padding-left:30rpx;
 				 top:7.5rpx;
 		     }
 			.img{

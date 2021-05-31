@@ -31,7 +31,7 @@
 	export default {
 		data() {
 			return {
-				phone:'15255132094',
+				phone:'',
 				code:'',
 				sendCodeTime:60,
 				sendFlag:false,
@@ -43,18 +43,27 @@
 		onReachBottom(){
 			
 		},
-		onLoad(){
+		onLoad(options){
+			this.setData(options);
+			this.getData();
 			
 		},
 		methods: {
 			// 返回
 			back(){
 				uni.navigateBack()
-					
-				
 			},
 			clearName(){
 				this.password='';
+			},
+			getData(){
+				let that=this;
+				this.$h5.get('user/finduser',{
+				},function(res){
+					if(res.code ==0){
+						that.phone= res.data.h_name
+					}
+				})
 			},
 			sendCode(){
 				this.sendFlag=true;
@@ -150,11 +159,11 @@
 		.sale-title{
 			 @extend  %title;
 			 .left{
-				 width:60rpx;
+				 width:100rpx;
 				 height: 75rpx;
 				 line-height: 75rpx; 
 				 position: absolute;
-				 left:30rpx;
+				 padding-left:30rpx;
 				 top:7.5rpx;
 		     }
 			.img{
